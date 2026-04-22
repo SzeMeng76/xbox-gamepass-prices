@@ -27,7 +27,7 @@ REGION_INFO = {
     'ar-DZ': {'currency': 'DZD', 'decimal': '.', 'thousand': ','},
     'ar-EG': {'currency': 'EGP', 'decimal': '.', 'thousand': ','},
     'ar-KW': {'currency': 'KWD', 'decimal': '.', 'thousand': ','},
-    'ar-LY': {'currency': 'LYD', 'decimal': '.', 'thousand': ','},
+    'ar-LY': {'currency': 'USD', 'decimal': '.', 'thousand': ','},
     'ar-MA': {'currency': 'MAD', 'decimal': '.', 'thousand': ','},
     'ar-OM': {'currency': 'OMR', 'decimal': '.', 'thousand': ','},
     'ar-QA': {'currency': 'QAR', 'decimal': '.', 'thousand': ','},
@@ -55,68 +55,66 @@ REGION_INFO = {
     'hr-HR': {'currency': 'EUR', 'decimal': ',', 'thousand': '.'},
     'id-ID': {'currency': 'IDR', 'decimal': ',', 'thousand': '.'},
     'is-IS': {'currency': 'ISK', 'decimal': ',', 'thousand': '.'},
-    'ka-GE': {'currency': 'GEL', 'decimal': '.', 'thousand': ','},
+    'ka-GE': {'currency': 'USD', 'decimal': '.', 'thousand': ','},
     'lt-LT': {'currency': 'EUR', 'decimal': ',', 'thousand': '.'},
     'lv-LV': {'currency': 'EUR', 'decimal': ',', 'thousand': '.'},
-    'mk-MK': {'currency': 'MKD', 'decimal': '.', 'thousand': ','},
+    'mk-MK': {'currency': 'USD', 'decimal': '.', 'thousand': ','},
     'mt-MT': {'currency': 'EUR', 'decimal': '.', 'thousand': ','},
-    'ro-MD': {'currency': 'MDL', 'decimal': '.', 'thousand': ','},
+    'ro-MD': {'currency': 'USD', 'decimal': '.', 'thousand': ','},
     'ro-RO': {'currency': 'RON', 'decimal': ',', 'thousand': '.'},
     'sl-SL': {'currency': 'EUR', 'decimal': ',', 'thousand': '.'},
-    'sq-AL': {'currency': 'ALL', 'decimal': ',', 'thousand': '.'},
+    'sq-AL': {'currency': 'USD', 'decimal': '.', 'thousand': ','},
     'th-TH': {'currency': 'THB', 'decimal': '.', 'thousand': ','},
     'uk-UA': {'currency': 'UAH', 'decimal': ',', 'thousand': '.'},
     'vi-VN': {'currency': 'VND', 'decimal': ',', 'thousand': '.'},
 }
 
 
-def clean_price(raw: str) -> Optional[float]:
+# Currencies with 3 decimal places — comma/dot before 3 digits is decimal, not thousand
+_THREE_DECIMAL_CURRENCIES = {'BHD', 'KWD', 'OMR', 'TND', 'LYD'}
+
+
+def clean_price(raw: str, currency: str = '') -> Optional[float]:
     """
     Auto-detect decimal/thousand separators from the raw string itself.
 
     Rules (applied to digits-and-separators only):
     - If last separator is ',' and it has exactly 2 digits after → decimal ','
     - If last separator is '.' and it has exactly 2 digits after → decimal '.'
-    - If separator appears with exactly 3 digits after (and more digits before) → thousand separator
-    - Single separator with 3 digits after and nothing before → could be thousand, treat as integer
+    - If separator appears with exactly 3 digits after → thousand sep normally,
+      but decimal sep for 3-decimal currencies (BHD, KWD, OMR, TND, LYD)
     """
     if not raw:
         return None
-    # Strip to digits, dots, commas only
     s = re.sub(r'[^\d.,]', '', raw.strip())
     if not s:
         return None
 
     has_dot = '.' in s
     has_comma = ',' in s
+    three_dec = currency.upper() in _THREE_DECIMAL_CURRENCIES
 
     if has_dot and has_comma:
-        # Both present: whichever comes last is the decimal separator
         if s.rindex('.') > s.rindex(','):
-            # e.g. 1,234.56 or 1,350.00
             s = s.replace(',', '')
         else:
-            # e.g. 1.234,56 or 23.990,00
             s = s.replace('.', '').replace(',', '.')
     elif has_comma:
         after_comma = s.rsplit(',', 1)[-1]
         if len(after_comma) == 2:
-            # e.g. 11,99 → decimal comma
+            s = s.replace(',', '.')
+        elif len(after_comma) == 3 and three_dec:
+            # e.g. 3,500 BHD → 3.5
             s = s.replace(',', '.')
         elif len(after_comma) == 3:
-            # e.g. 3,500 → thousand comma
             s = s.replace(',', '')
         else:
             s = s.replace(',', '')
     elif has_dot:
         after_dot = s.rsplit('.', 1)[-1]
-        if len(after_dot) == 2:
-            # e.g. 4.50 → decimal dot (keep as-is)
-            pass
-        elif len(after_dot) == 3:
-            # e.g. 2.170 → thousand dot
+        if len(after_dot) == 3 and not three_dec:
             s = s.replace('.', '')
-        # else keep as-is
+        # else keep as-is (2-digit decimal or 3-decimal currency)
 
     try:
         return float(s)
@@ -124,7 +122,7 @@ def clean_price(raw: str) -> Optional[float]:
         return None
 
 
-def extract_prices(html: str) -> Dict[str, Any]:
+def extract_prices(html: str, currency: str = '') -> Dict[str, Any]:
     result: Dict[str, Any] = {
         'intro_price_raw': None,
         'regular_price_raw': None,
@@ -146,28 +144,32 @@ def extract_prices(html: str) -> Dict[str, Any]:
     #   id-ID: "Dapatkan 14 hari pertama ... seharga Rp14.000, lalu Rp89.999\/bulan"
     #   ro-RO: "Obțineți primele ... pentru X lei, apoi Y lei\/lună"
     intro_patterns = [
-        # English: "for PRICE, then PRICE/month"
-        rf'for\s+[^\d]*({num})[^,\"]*,\s*then\s+[^\d]*({num})\s*(?:\\u002F|/)(?:month|mo)[^t]',
+        # English: "for PRICE, then PRICE/month" (exclude "for N days")
+        rf'for\s+(?![\d]+\s+days)[^\d]*({num})[^,\"]*,\s*then\s+[^\d]*({num})[^\"<]*(?:\\u002F|/)(?:month|mo)[^t]',
         # Vietnamese
         rf'v[oớ]i\s+({num})\s*[^\d,\"]*,\s*sau đó là\s+({num})\s*[^\d\"]*(?:\\u002F|/)tháng',
-        # Ukrainian
-        rf'за\s+({num})\s*[^,\"]*,\s*далі за ціною\s+({num})\s*[^\"]*(?:\\u002F|/)(?:міс|мес)',
-        # Spanish
-        rf'por\s+[^\d]*({num})[^,\"]*,\s*(?:luego|después)\s+[^\d]*({num})\s*[^\"]*(?:\\u002F|/)mes',
+        # Ukrainian (uses \xa0 non-breaking spaces)
+        rf'за[\s\xa0]+({num})[\s\xa0]*[^,\"]*,\s*далі за[\s\xa0]+ціною[\s\xa0]+({num})[\s\xa0]*[^\"]*(?:/|/міс)',
+        # Spanish: "por X, luego Y/mes" or "por X, luego Y al mes"
+        rf'por\s+[^\d]*({num})[^,\"]*,\s*(?:luego|después)\s+[^\d]*({num})\s*[^\"]*(?:al\s+mes|(?:\\u002F|/)mes)',
         # Indonesian: "seharga RpX, lalu RpY/bulan"
         rf'seharga\s+[^\d]*({num})[^,\"]*,\s*lalu\s+[^\d]*({num})\s*[^\"]*(?:\\u002F|/)bulan',
         # Romanian: "pentru X, apoi Y/lună"
         rf'pentru\s+[^\d]*({num})[^,\"]*,\s*apoi\s+[^\d]*({num})\s*[^\"]*(?:\\u002F|/)lun',
         # Thai: "เพียง X จากนั้น Y/เดือน"
         rf'เพียง\s+[^\d]*({num})\s*[^\d,\"]*(?:จากนั้น|,)\s*[^\d]*({num})\s*[^\"]*(?:\\u002F|/)เดือน',
+        # German: "für X, danach Y/Monat"
+        rf'f[üu]r\s+[^\d]*({num})[^,\"]*,\s*danach\s+[^\d]*({num})\s*[^\"]*(?:\\u002F|/)Monat',
+        # French: "pour seulement X, puis Y par mois" or "pour X, puis Y/mois"
+        rf'pour\s+(?:seulement\s+)?[^\d]*({num})\s*[^,\"]*,\s*puis\s+[^\d]*({num})\s*[^\"]*(?:par\s+mois|(?:\\u002F|/)mois)',
     ]
 
     for pattern in intro_patterns:
         m = re.search(pattern, html, re.IGNORECASE)
         if m:
             raw1, raw2 = m.group(1), m.group(2)
-            p1 = clean_price(raw1)
-            p2 = clean_price(raw2)
+            p1 = clean_price(raw1, currency)
+            p2 = clean_price(raw2, currency)
             if p1 and p2 and p1 != p2:
                 result['intro_price_raw'] = raw1
                 result['regular_price_raw'] = raw2
@@ -182,25 +184,31 @@ def extract_prices(html: str) -> Dict[str, Any]:
     #   uk-UA: "вартістю 230,00 ₴ на місяць"
     #   ar-BH: "automatically at 3,500 BHD‏/month"   ← BHD uses , as thousand sep
     auto_patterns = [
-        # English: "automatically at PRICE/month"
-        rf'automatically at\s+[^\d]*({num})\s*[^\/\"<]*(?:/|\\u002F)(?:month|mo)[^t]',
+        # English: "automatically at PRICE/month" (allows RTL marks and double-slash like ar-DZ)
+        rf'automatically at\s+[^\d]*({num})\s*[^\"<]*(?:/|\\u002F)(?:month|mo)[^t]',
         # Vietnamese
         rf'mức phí\s+({num})\s*[^\d\"<]*(?:/|\\u002F)tháng',
         # Ukrainian
-        rf'вартістю\s+({num})\s*[^\d\"<]*на місяць',
-        # Indonesian
-        rf'diperpanjang otomatis seharga\s+[^\d]*({num})\s*[^\/\"<]*(?:/|\\u002F)bulan',
+        rf'вартістю[\s\xa0]+({num})[\s\xa0]*[^\d\"<]*на[\s\xa0]+місяць',
+        # Indonesian: "di harga RpX/bln" or "seharga RpX/bulan"
+        rf'(?:di harga|seharga)\s+[^\d]*({num})\s*[^\/\"<]*(?:/|\\u002F)(?:bulan|bln)',
         # Romanian
         rf'reînnoire automat[ă]\s+[^\d]*({num})\s*[^\/\"<]*(?:/|\\u002F)lun',
         # Thai: "โดยอัตโนมัติในราคา ฿129.00 บาทต่อเดือน"
         rf'อัตโนมัติ[^฿\d]*[฿\s]*({num})\s*[^\/\"<]*(?:/|ต่อ)เดือน',
+        # German: "automatisch für CHF 14.50/Monat fortgesetzt"
+        rf'automatisch\s+f[üu]r\s+[^\d]*({num})\s*[^\/\"<]*(?:/|\\u002F)Monat',
+        # French: "automatiquement au prix de 11,99 €/mois"
+        rf'automatiquement\s+au\s+(?:tarif|prix)\s+[^\d]*({num})\s*[^\/\"<]*(?:(?:/|\\u002F)mois|par\s+mois)',
+        # Spanish: "automáticamente por S/.32.99 al mes"
+        rf'autom[aá]ticamente\s+(?:a\s+)?[^\d]*({num})\s*[^\/\"<]*(?:al\s+mes|(?:/|\\u002F)mes)',
     ]
 
     for pattern in auto_patterns:
         m = re.search(pattern, html, re.IGNORECASE)
         if m:
             raw = m.group(1)
-            price = clean_price(raw)
+            price = clean_price(raw, currency)
             if price:
                 result['auto_renew_price_raw'] = raw
                 result['auto_renew_price'] = price
@@ -218,8 +226,11 @@ async def fetch_xbox_price(browser, region_code: str) -> Dict[str, Any]:
         print(f"[{region_code}] Fetching...")
         await page.goto(url, wait_until='networkidle', timeout=30000)
         html = await page.content()
+        # Decode \uXXXX escapes in JSON blobs (e.g. / → /) without
+        # corrupting already-decoded non-ASCII characters elsewhere in the DOM.
+        html = re.sub(r'\\u([0-9a-fA-F]{4})', lambda m: chr(int(m.group(1), 16)), html)
 
-        prices = extract_prices(html)
+        prices = extract_prices(html, currency)
 
         result: Dict[str, Any] = {
             'region_code': region_code,
