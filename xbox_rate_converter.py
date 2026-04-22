@@ -120,19 +120,38 @@ def process():
             all_regions.append(entry)
             continue
 
-        for price_type in ('intro_price', 'regular_price', 'auto_renew_price'):
-            raw_key = price_type + '_raw'
-            val = item.get(price_type)
-            raw = item.get(raw_key)
-            if val is not None:
-                entry[price_type] = val
-                entry[price_type + '_raw'] = raw
-                entry[price_type + '_cny'] = to_cny(val, currency, rates)
+        # Process plans array
+        plans_out = []
+        for plan in item.get('plans', []):
+            plan_out = {'plan': plan['plan']}
+            for price_type in ('intro_price', 'regular_price', 'auto_renew_price'):
+                val = plan.get(price_type)
+                raw = plan.get(price_type + '_raw')
+                if val is not None:
+                    plan_out[price_type] = val
+                    plan_out[price_type + '_raw'] = raw
+                    plan_out[price_type + '_cny'] = to_cny(val, currency, rates)
+            plans_out.append(plan_out)
 
+        entry['plans'] = plans_out
         all_regions.append(entry)
 
-    # Build top-10 ranking by auto_renew_price_cny
-    rankable = [r for r in all_regions if r.get('auto_renew_price_cny') is not None]
+    # Build top-10 ranking by PC Game Pass auto_renew_price_cny
+    rankable = []
+    for r in all_regions:
+        for plan in r.get('plans', []):
+            if plan.get('plan') == 'PC Game Pass':
+                price_cny = plan.get('auto_renew_price_cny') or plan.get('regular_price_cny')
+                if price_cny is not None:
+                    rankable.append({
+                        'region_code': r['region_code'],
+                        'name_en': r['name_en'],
+                        'name_cn': r['name_cn'],
+                        'currency': r['currency'],
+                        'auto_renew_price': plan.get('auto_renew_price') or plan.get('regular_price'),
+                        'auto_renew_price_cny': price_cny,
+                    })
+
     ranked = sorted(rankable, key=lambda x: x['auto_renew_price_cny'])
 
     top10 = [
@@ -150,8 +169,8 @@ def process():
 
     output = {
         '_updated_at': updated_at,
-        '_top10_cheapest_auto_renew': {
-            'description': 'Top 10 cheapest regions for Xbox Game Pass PC (auto-renew monthly price, converted to CNY)',
+        '_top10_cheapest_pc_game_pass': {
+            'description': 'Top 10 cheapest regions for PC Game Pass (auto-renew monthly price, converted to CNY)',
             'updated_at': updated_at,
             'data': top10,
         },
@@ -162,7 +181,7 @@ def process():
         json.dump(output, f, ensure_ascii=False, indent=2)
 
     print(f'\nProcessed {len(all_regions)} regions -> xbox_gamepass_prices_processed.json')
-    print(f'\nTop 10 cheapest (auto-renew):')
+    print(f'\nTop 10 cheapest PC Game Pass (auto-renew):')
     for item in top10:
         print(f"  {item['rank']:2d}. {item['region_code']:8s} {item['auto_renew_price']:10.2f} {item['currency']:4s} = ¥{item['auto_renew_price_cny']:.2f}")
 

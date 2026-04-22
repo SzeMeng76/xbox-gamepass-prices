@@ -3,7 +3,7 @@ import re
 import json
 import sys
 from datetime import datetime, timezone
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, List
 from playwright.async_api import async_playwright
 
 if sys.platform == 'win32':
@@ -21,69 +21,66 @@ REGIONS = [
     'sq-AL', 'th-TH', 'uk-UA', 'vi-VN',
 ]
 
-# Per-region metadata: currency, decimal separator, thousand separator
 REGION_INFO = {
-    'ar-BH': {'currency': 'BHD', 'decimal': '.', 'thousand': ','},
-    'ar-DZ': {'currency': 'DZD', 'decimal': '.', 'thousand': ','},
-    'ar-EG': {'currency': 'EGP', 'decimal': '.', 'thousand': ','},
-    'ar-KW': {'currency': 'KWD', 'decimal': '.', 'thousand': ','},
-    'ar-LY': {'currency': 'USD', 'decimal': '.', 'thousand': ','},
-    'ar-MA': {'currency': 'MAD', 'decimal': '.', 'thousand': ','},
-    'ar-OM': {'currency': 'OMR', 'decimal': '.', 'thousand': ','},
-    'ar-QA': {'currency': 'QAR', 'decimal': '.', 'thousand': ','},
-    'ar-TN': {'currency': 'TND', 'decimal': '.', 'thousand': ','},
-    'bg-BG': {'currency': 'BGN', 'decimal': '.', 'thousand': ','},
-    'de-LI': {'currency': 'CHF', 'decimal': '.', 'thousand': ','},
-    'de-LU': {'currency': 'EUR', 'decimal': ',', 'thousand': '.'},
-    'en-CY': {'currency': 'EUR', 'decimal': '.', 'thousand': ','},
-    'en-MY': {'currency': 'MYR', 'decimal': '.', 'thousand': ','},
-    'en-PH': {'currency': 'PHP', 'decimal': '.', 'thousand': ','},
-    'en-US': {'currency': 'USD', 'decimal': '.', 'thousand': ','},
-    'es-BO': {'currency': 'BOB', 'decimal': '.', 'thousand': ','},
-    'es-CR': {'currency': 'CRC', 'decimal': '.', 'thousand': ','},
-    'es-EC': {'currency': 'USD', 'decimal': '.', 'thousand': ','},
-    'es-GT': {'currency': 'GTQ', 'decimal': '.', 'thousand': ','},
-    'es-HN': {'currency': 'HNL', 'decimal': '.', 'thousand': ','},
-    'es-NI': {'currency': 'NIO', 'decimal': '.', 'thousand': ','},
-    'es-PA': {'currency': 'USD', 'decimal': '.', 'thousand': ','},
-    'es-PE': {'currency': 'PEN', 'decimal': '.', 'thousand': ','},
-    'es-PY': {'currency': 'PYG', 'decimal': ',', 'thousand': '.'},
-    'es-SV': {'currency': 'USD', 'decimal': '.', 'thousand': ','},
-    'es-UY': {'currency': 'UYU', 'decimal': ',', 'thousand': '.'},
-    'et-EE': {'currency': 'EUR', 'decimal': ',', 'thousand': '.'},
-    'fr-LU': {'currency': 'EUR', 'decimal': ',', 'thousand': '.'},
-    'hr-HR': {'currency': 'EUR', 'decimal': ',', 'thousand': '.'},
-    'id-ID': {'currency': 'IDR', 'decimal': ',', 'thousand': '.'},
-    'is-IS': {'currency': 'ISK', 'decimal': ',', 'thousand': '.'},
-    'ka-GE': {'currency': 'USD', 'decimal': '.', 'thousand': ','},
-    'lt-LT': {'currency': 'EUR', 'decimal': ',', 'thousand': '.'},
-    'lv-LV': {'currency': 'EUR', 'decimal': ',', 'thousand': '.'},
-    'mk-MK': {'currency': 'USD', 'decimal': '.', 'thousand': ','},
-    'mt-MT': {'currency': 'EUR', 'decimal': '.', 'thousand': ','},
-    'ro-MD': {'currency': 'USD', 'decimal': '.', 'thousand': ','},
-    'ro-RO': {'currency': 'RON', 'decimal': ',', 'thousand': '.'},
-    'sl-SL': {'currency': 'EUR', 'decimal': ',', 'thousand': '.'},
-    'sq-AL': {'currency': 'USD', 'decimal': '.', 'thousand': ','},
-    'th-TH': {'currency': 'THB', 'decimal': '.', 'thousand': ','},
-    'uk-UA': {'currency': 'UAH', 'decimal': ',', 'thousand': '.'},
-    'vi-VN': {'currency': 'VND', 'decimal': ',', 'thousand': '.'},
+    'ar-BH': {'currency': 'BHD'},
+    'ar-DZ': {'currency': 'DZD'},
+    'ar-EG': {'currency': 'EGP'},
+    'ar-KW': {'currency': 'KWD'},
+    'ar-LY': {'currency': 'USD'},
+    'ar-MA': {'currency': 'MAD'},
+    'ar-OM': {'currency': 'OMR'},
+    'ar-QA': {'currency': 'QAR'},
+    'ar-TN': {'currency': 'TND'},
+    'bg-BG': {'currency': 'BGN'},
+    'de-LI': {'currency': 'CHF'},
+    'de-LU': {'currency': 'EUR'},
+    'en-CY': {'currency': 'EUR'},
+    'en-MY': {'currency': 'MYR'},
+    'en-PH': {'currency': 'PHP'},
+    'en-US': {'currency': 'USD'},
+    'es-BO': {'currency': 'BOB'},
+    'es-CR': {'currency': 'CRC'},
+    'es-EC': {'currency': 'USD'},
+    'es-GT': {'currency': 'GTQ'},
+    'es-HN': {'currency': 'HNL'},
+    'es-NI': {'currency': 'NIO'},
+    'es-PA': {'currency': 'USD'},
+    'es-PE': {'currency': 'PEN'},
+    'es-PY': {'currency': 'PYG'},
+    'es-SV': {'currency': 'USD'},
+    'es-UY': {'currency': 'UYU'},
+    'et-EE': {'currency': 'EUR'},
+    'fr-LU': {'currency': 'EUR'},
+    'hr-HR': {'currency': 'EUR'},
+    'id-ID': {'currency': 'IDR'},
+    'is-IS': {'currency': 'ISK'},
+    'ka-GE': {'currency': 'USD'},
+    'lt-LT': {'currency': 'EUR'},
+    'lv-LV': {'currency': 'EUR'},
+    'mk-MK': {'currency': 'USD'},
+    'mt-MT': {'currency': 'EUR'},
+    'ro-MD': {'currency': 'USD'},
+    'ro-RO': {'currency': 'RON'},
+    'sl-SL': {'currency': 'EUR'},
+    'sq-AL': {'currency': 'USD'},
+    'th-TH': {'currency': 'THB'},
+    'uk-UA': {'currency': 'UAH'},
+    'vi-VN': {'currency': 'VND'},
 }
 
+# Plan IDs found in HTML → display name
+PLAN_IDS = {
+    'pcgamepass':       'PC Game Pass',
+    'coregamepass':     'Game Pass Core',
+    'standardgamepass': 'Game Pass Standard',
+    'ultimategamepass': 'Game Pass Ultimate',
+}
 
-# Currencies with 3 decimal places — comma/dot before 3 digits is decimal, not thousand
+# Currencies with 3 decimal places — comma/dot before 3 digits is decimal
 _THREE_DECIMAL_CURRENCIES = {'BHD', 'KWD', 'OMR', 'TND', 'LYD'}
 
 
 def clean_price(raw: str, currency: str = '') -> Optional[float]:
-    """
-    Auto-detect decimal/thousand separators from the raw string itself.
-
-    Rules (applied to digits-and-separators only):
-    - If last separator is ',' and it has exactly 2 digits after → decimal ','
-    - If last separator is '.' and it has exactly 2 digits after → decimal '.'
-    - If separator appears with exactly 3 digits after → thousand sep normally,
-      but decimal sep for 3-decimal currencies (BHD, KWD, OMR, TND, LYD)
-    """
     if not raw:
         return None
     s = re.sub(r'[^\d.,]', '', raw.strip())
@@ -104,17 +101,13 @@ def clean_price(raw: str, currency: str = '') -> Optional[float]:
         if len(after_comma) == 2:
             s = s.replace(',', '.')
         elif len(after_comma) == 3 and three_dec:
-            # e.g. 3,500 BHD → 3.5
             s = s.replace(',', '.')
-        elif len(after_comma) == 3:
-            s = s.replace(',', '')
         else:
             s = s.replace(',', '')
     elif has_dot:
         after_dot = s.rsplit('.', 1)[-1]
         if len(after_dot) == 3 and not three_dec:
             s = s.replace('.', '')
-        # else keep as-is (2-digit decimal or 3-decimal currency)
 
     try:
         return float(s)
@@ -122,8 +115,9 @@ def clean_price(raw: str, currency: str = '') -> Optional[float]:
         return None
 
 
-def extract_prices(html: str, currency: str = '') -> Dict[str, Any]:
-    result: Dict[str, Any] = {
+def _empty_plan(name: str) -> Dict[str, Any]:
+    return {
+        'plan': name,
         'intro_price_raw': None,
         'regular_price_raw': None,
         'auto_renew_price_raw': None,
@@ -132,75 +126,119 @@ def extract_prices(html: str, currency: str = '') -> Dict[str, Any]:
         'auto_renew_price': None,
     }
 
-    # Generic number pattern — matches any combo of digits, dots, commas
-    num = r'[\d]+(?:[.,][\d]+)*'
 
-    # ── intro + regular from __PRELOADED_STATE__ (unicode-escaped JSON in <script>)
-    # Examples found in debug:
-    #   en-PH: "Get your first 14 days for ₱59, then ₱320\/month"
-    #   ar-BH: "Get your first 14 days for BD 0.40, then BD 4.50\/month"
-    #   vi-VN: "với 24.900 ₫, sau đó là 129.000 ₫\/tháng"
-    #   uk-UA: "за 39,99 ₴, далі за ціною 290,00 ₴\/міс"
-    #   id-ID: "Dapatkan 14 hari pertama ... seharga Rp14.000, lalu Rp89.999\/bulan"
-    #   ro-RO: "Obțineți primele ... pentru X lei, apoi Y lei\/lună"
+def extract_plan_prices_from_blocks(html: str, currency: str) -> List[Dict[str, Any]]:
+    """
+    Extract prices from structured plan blocks (id='pcgamepass', etc.).
+    Each block looks like:
+      <... id="pcgamepass"><...>$13.99/month</...>
+      or: <... id="coregamepass"><span>Get your first month for $1, <br> then $9.99/month
+    Returns list of plan dicts, or empty list if no plan blocks found.
+    """
+    num = r'[\d]+(?:[.,][\d]+)*'
+    plans = []
+
+    for plan_id, plan_name in PLAN_IDS.items():
+        # Find the block starting at id="<plan_id>"
+        m = re.search(rf'id="{plan_id}"(.*?)(?:id="(?:{"|}".join(PLAN_IDS.keys())})|</section|</div>\s*</div>\s*</div)', html, re.DOTALL | re.IGNORECASE)
+        if not m:
+            continue
+
+        block = m.group(1)
+        plan = _empty_plan(plan_name)
+
+        # Try intro + regular: "for $1, then $9.99/month"
+        m2 = re.search(
+            rf'for\s+(?![\d]+\s+days)[^\d]*({num})[^,<]*,\s*(?:<[^>]+>)*\s*then\s+[^\d]*({num})[^<]*(?:/|\\u002F)(?:month|mo)\b',
+            block, re.IGNORECASE
+        )
+        if m2:
+            r1, r2 = m2.group(1), m2.group(2)
+            p1, p2 = clean_price(r1, currency), clean_price(r2, currency)
+            if p1 and p2 and p1 != p2:
+                plan['intro_price_raw'] = r1
+                plan['regular_price_raw'] = r2
+                plan['intro_price'] = p1
+                plan['regular_price'] = p2
+
+        # Try standalone price: "$22.99/month" or "LOWER PRICE<br>$22.99/month"
+        if not plan['regular_price']:
+            m3 = re.search(rf'[^\d]*({num})[^<\"]*(?:/|\\u002F)(?:month|mo)\b', block, re.IGNORECASE)
+            if m3:
+                raw = m3.group(1)
+                price = clean_price(raw, currency)
+                if price:
+                    plan['regular_price_raw'] = raw
+                    plan['regular_price'] = price
+
+        # Auto-renew: "automatically at $X.XX/month"
+        m4 = re.search(
+            rf'automatically at\s+[^\d]*({num})\s*[^\"<]*(?:/|\\u002F)(?:month|mo)\b',
+            block, re.IGNORECASE
+        )
+        if m4:
+            raw = m4.group(1)
+            price = clean_price(raw, currency)
+            if price:
+                plan['auto_renew_price_raw'] = raw
+                plan['auto_renew_price'] = price
+
+        if plan['intro_price'] or plan['regular_price'] or plan['auto_renew_price']:
+            plans.append(plan)
+
+    return plans
+
+
+def extract_prices_fallback(html: str, currency: str) -> Optional[Dict[str, Any]]:
+    """
+    Legacy regex-based extraction for regions with no plan blocks.
+    Returns a single PC Game Pass plan dict, or None.
+    """
+    num = r'[\d]+(?:[.,][\d]+)*'
+    plan = _empty_plan('PC Game Pass')
+
     intro_patterns = [
         # English: "for PRICE, then PRICE/month" (exclude "for N days")
-        rf'for\s+(?![\d]+\s+days)[^\d]*({num})[^,\"]*,\s*then\s+[^\d]*({num})[^\"<]*(?:\\u002F|/)(?:month|mo)[^t]',
+        rf'for\s+(?![\d]+\s+days)[^\d]*({num})[^,\"]*,\s*then\s+[^\d]*({num})[^\"<]*(?:/|\\u002F)(?:month|mo)[^t]',
         # Vietnamese
-        rf'v[oớ]i\s+({num})\s*[^\d,\"]*,\s*sau đó là\s+({num})\s*[^\d\"]*(?:\\u002F|/)tháng',
+        rf'v[oớ]i\s+({num})\s*[^\d,\"]*,\s*sau đó là\s+({num})\s*[^\d\"]*(?:/|\\u002F)tháng',
         # Ukrainian (uses \xa0 non-breaking spaces)
         rf'за[\s\xa0]+({num})[\s\xa0]*[^,\"]*,\s*далі за[\s\xa0]+ціною[\s\xa0]+({num})[\s\xa0]*[^\"]*(?:/|/міс)',
-        # Spanish: "por X, luego Y/mes" or "por X, luego Y al mes"
-        rf'por\s+[^\d]*({num})[^,\"]*,\s*(?:luego|después)\s+[^\d]*({num})\s*[^\"]*(?:al\s+mes|(?:\\u002F|/)mes)',
-        # Indonesian: "seharga RpX, lalu RpY/bulan"
-        rf'seharga\s+[^\d]*({num})[^,\"]*,\s*lalu\s+[^\d]*({num})\s*[^\"]*(?:\\u002F|/)bulan',
-        # Romanian: "pentru X, apoi Y/lună"
-        rf'pentru\s+[^\d]*({num})[^,\"]*,\s*apoi\s+[^\d]*({num})\s*[^\"]*(?:\\u002F|/)lun',
-        # Thai: "เพียง X จากนั้น Y/เดือน"
-        rf'เพียง\s+[^\d]*({num})\s*[^\d,\"]*(?:จากนั้น|,)\s*[^\d]*({num})\s*[^\"]*(?:\\u002F|/)เดือน',
-        # German: "für X, danach Y/Monat"
-        rf'f[üu]r\s+[^\d]*({num})[^,\"]*,\s*danach\s+[^\d]*({num})\s*[^\"]*(?:\\u002F|/)Monat',
-        # French: "pour seulement X, puis Y par mois" or "pour X, puis Y/mois"
-        rf'pour\s+(?:seulement\s+)?[^\d]*({num})\s*[^,\"]*,\s*puis\s+[^\d]*({num})\s*[^\"]*(?:par\s+mois|(?:\\u002F|/)mois)',
+        # Spanish
+        rf'por\s+[^\d]*({num})[^,\"]*,\s*(?:luego|después)\s+[^\d]*({num})\s*[^\"]*(?:al\s+mes|(?:/|\\u002F)mes)',
+        # Indonesian
+        rf'seharga\s+[^\d]*({num})[^,\"]*,\s*lalu\s+[^\d]*({num})\s*[^\"]*(?:/|\\u002F)bulan',
+        # Romanian
+        rf'pentru\s+[^\d]*({num})[^,\"]*,\s*apoi\s+[^\d]*({num})\s*[^\"]*(?:/|\\u002F)lun',
+        # Thai
+        rf'เพียง\s+[^\d]*({num})\s*[^\d,\"]*(?:จากนั้น|,)\s*[^\d]*({num})\s*[^\"]*(?:/|\\u002F)เดือน',
+        # German
+        rf'f[üu]r\s+[^\d]*({num})[^,\"]*,\s*danach\s+[^\d]*({num})\s*[^\"]*(?:/|\\u002F)Monat',
+        # French
+        rf'pour\s+(?:seulement\s+)?[^\d]*({num})\s*[^,\"]*,\s*puis\s+[^\d]*({num})\s*[^\"]*(?:par\s+mois|(?:/|\\u002F)mois)',
     ]
 
     for pattern in intro_patterns:
         m = re.search(pattern, html, re.IGNORECASE)
         if m:
-            raw1, raw2 = m.group(1), m.group(2)
-            p1 = clean_price(raw1, currency)
-            p2 = clean_price(raw2, currency)
+            r1, r2 = m.group(1), m.group(2)
+            p1, p2 = clean_price(r1, currency), clean_price(r2, currency)
             if p1 and p2 and p1 != p2:
-                result['intro_price_raw'] = raw1
-                result['regular_price_raw'] = raw2
-                result['intro_price'] = p1
-                result['regular_price'] = p2
+                plan['intro_price_raw'] = r1
+                plan['regular_price_raw'] = r2
+                plan['intro_price'] = p1
+                plan['regular_price'] = p2
                 break
 
-    # ── auto_renew from rendered HTML
-    # Examples:
-    #   en-PH: "subscription continues automatically at ₱225.00/month"
-    #   vi-VN: "mức phí 79.000,00 ₫/tháng"
-    #   uk-UA: "вартістю 230,00 ₴ на місяць"
-    #   ar-BH: "automatically at 3,500 BHD‏/month"   ← BHD uses , as thousand sep
     auto_patterns = [
-        # English: "automatically at PRICE/month" (allows RTL marks and double-slash like ar-DZ)
         rf'automatically at\s+[^\d]*({num})\s*[^\"<]*(?:/|\\u002F)(?:month|mo)[^t]',
-        # Vietnamese
         rf'mức phí\s+({num})\s*[^\d\"<]*(?:/|\\u002F)tháng',
-        # Ukrainian
         rf'вартістю[\s\xa0]+({num})[\s\xa0]*[^\d\"<]*на[\s\xa0]+місяць',
-        # Indonesian: "di harga RpX/bln" or "seharga RpX/bulan"
         rf'(?:di harga|seharga)\s+[^\d]*({num})\s*[^\/\"<]*(?:/|\\u002F)(?:bulan|bln)',
-        # Romanian
         rf'reînnoire automat[ă]\s+[^\d]*({num})\s*[^\/\"<]*(?:/|\\u002F)lun',
-        # Thai: "โดยอัตโนมัติในราคา ฿129.00 บาทต่อเดือน"
         rf'อัตโนมัติ[^฿\d]*[฿\s]*({num})\s*[^\/\"<]*(?:/|ต่อ)เดือน',
-        # German: "automatisch für CHF 14.50/Monat fortgesetzt"
         rf'automatisch\s+f[üu]r\s+[^\d]*({num})\s*[^\/\"<]*(?:/|\\u002F)Monat',
-        # French: "automatiquement au prix de 11,99 €/mois"
         rf'automatiquement\s+au\s+(?:tarif|prix)\s+[^\d]*({num})\s*[^\/\"<]*(?:(?:/|\\u002F)mois|par\s+mois)',
-        # Spanish: "automáticamente por S/.32.99 al mes"
         rf'autom[aá]ticamente\s+(?:a\s+)?[^\d]*({num})\s*[^\/\"<]*(?:al\s+mes|(?:/|\\u002F)mes)',
     ]
 
@@ -210,11 +248,13 @@ def extract_prices(html: str, currency: str = '') -> Dict[str, Any]:
             raw = m.group(1)
             price = clean_price(raw, currency)
             if price:
-                result['auto_renew_price_raw'] = raw
-                result['auto_renew_price'] = price
+                plan['auto_renew_price_raw'] = raw
+                plan['auto_renew_price'] = price
                 break
 
-    return result
+    if plan['intro_price'] or plan['regular_price'] or plan['auto_renew_price']:
+        return plan
+    return None
 
 
 async def fetch_xbox_price(browser, region_code: str) -> Dict[str, Any]:
@@ -226,28 +266,33 @@ async def fetch_xbox_price(browser, region_code: str) -> Dict[str, Any]:
         print(f"[{region_code}] Fetching...")
         await page.goto(url, wait_until='networkidle', timeout=30000)
         html = await page.content()
-        # Decode \uXXXX escapes in JSON blobs (e.g. / → /) without
-        # corrupting already-decoded non-ASCII characters elsewhere in the DOM.
         html = re.sub(r'\\u([0-9a-fA-F]{4})', lambda m: chr(int(m.group(1), 16)), html)
 
-        prices = extract_prices(html, currency)
+        # Try structured plan blocks first
+        plans = extract_plan_prices_from_blocks(html, currency)
+
+        # Fall back to legacy regex for regions without plan blocks
+        if not plans:
+            fallback = extract_prices_fallback(html, currency)
+            if fallback:
+                plans = [fallback]
 
         result: Dict[str, Any] = {
             'region_code': region_code,
             'currency': currency,
             'url': url,
             'scraped_at': datetime.now(timezone.utc).isoformat(),
-            **prices,
+            'plans': plans,
         }
 
-        parts = []
-        if prices['intro_price']:
-            parts.append(f"intro={prices['intro_price']}")
-        if prices['regular_price']:
-            parts.append(f"regular={prices['regular_price']}")
-        if prices['auto_renew_price']:
-            parts.append(f"auto={prices['auto_renew_price']}")
-        print(f"[{region_code}] {'OK  ' + ', '.join(parts) if parts else '--  no prices found'}")
+        if plans:
+            summary = ', '.join(
+                f"{p['plan']}(auto={p['auto_renew_price'] or p['regular_price']})"
+                for p in plans
+            )
+            print(f"[{region_code}] OK  {summary}")
+        else:
+            print(f"[{region_code}] --  no prices found")
 
         return result
 
@@ -259,6 +304,7 @@ async def fetch_xbox_price(browser, region_code: str) -> Dict[str, Any]:
             'url': url,
             'error': str(e),
             'scraped_at': datetime.now(timezone.utc).isoformat(),
+            'plans': [],
         }
     finally:
         await page.close()
@@ -280,7 +326,7 @@ async def main():
     with open('xbox_gamepass_prices.json', 'w', encoding='utf-8') as f:
         json.dump(results, f, ensure_ascii=False, indent=2)
 
-    ok = sum(1 for r in results if r.get('intro_price') or r.get('regular_price') or r.get('auto_renew_price'))
+    ok = sum(1 for r in results if r.get('plans'))
     print("=" * 60)
     print(f"Done. {ok}/{len(results)} regions with prices.")
 
