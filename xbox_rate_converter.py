@@ -1,170 +1,171 @@
 import json
+import os
 import requests
-from datetime import datetime
-from typing import Dict, Any, Optional
+from datetime import datetime, timezone
+from decimal import Decimal, ROUND_HALF_UP, InvalidOperation
+from typing import Optional
+
+# Requires API_KEY env var from openexchangerates.org (free tier works)
+API_KEY = os.getenv('API_KEY', '')
+API_URL = f'https://openexchangerates.org/api/latest.json?app_id={API_KEY}&base=USD'
+
+REGION_INFO = {
+    'ar-BH': {'currency': 'BHD', 'name_en': 'Bahrain',        'name_cn': '巴林'},
+    'ar-DZ': {'currency': 'DZD', 'name_en': 'Algeria',        'name_cn': '阿尔及利亚'},
+    'ar-EG': {'currency': 'EGP', 'name_en': 'Egypt',          'name_cn': '埃及'},
+    'ar-KW': {'currency': 'KWD', 'name_en': 'Kuwait',         'name_cn': '科威特'},
+    'ar-LY': {'currency': 'LYD', 'name_en': 'Libya',          'name_cn': '利比亚'},
+    'ar-MA': {'currency': 'MAD', 'name_en': 'Morocco',        'name_cn': '摩洛哥'},
+    'ar-OM': {'currency': 'OMR', 'name_en': 'Oman',           'name_cn': '阿曼'},
+    'ar-QA': {'currency': 'QAR', 'name_en': 'Qatar',          'name_cn': '卡塔尔'},
+    'ar-TN': {'currency': 'TND', 'name_en': 'Tunisia',        'name_cn': '突尼斯'},
+    'bg-BG': {'currency': 'BGN', 'name_en': 'Bulgaria',       'name_cn': '保加利亚'},
+    'de-LI': {'currency': 'CHF', 'name_en': 'Liechtenstein',  'name_cn': '列支敦士登'},
+    'de-LU': {'currency': 'EUR', 'name_en': 'Luxembourg',     'name_cn': '卢森堡'},
+    'en-CY': {'currency': 'EUR', 'name_en': 'Cyprus',         'name_cn': '塞浦路斯'},
+    'en-MY': {'currency': 'MYR', 'name_en': 'Malaysia',       'name_cn': '马来西亚'},
+    'en-PH': {'currency': 'PHP', 'name_en': 'Philippines',    'name_cn': '菲律宾'},
+    'en-US': {'currency': 'USD', 'name_en': 'United States',  'name_cn': '美国'},
+    'es-BO': {'currency': 'BOB', 'name_en': 'Bolivia',        'name_cn': '玻利维亚'},
+    'es-CR': {'currency': 'CRC', 'name_en': 'Costa Rica',     'name_cn': '哥斯达黎加'},
+    'es-EC': {'currency': 'USD', 'name_en': 'Ecuador',        'name_cn': '厄瓜多尔'},
+    'es-GT': {'currency': 'GTQ', 'name_en': 'Guatemala',      'name_cn': '危地马拉'},
+    'es-HN': {'currency': 'HNL', 'name_en': 'Honduras',       'name_cn': '洪都拉斯'},
+    'es-NI': {'currency': 'NIO', 'name_en': 'Nicaragua',      'name_cn': '尼加拉瓜'},
+    'es-PA': {'currency': 'USD', 'name_en': 'Panama',         'name_cn': '巴拿马'},
+    'es-PE': {'currency': 'PEN', 'name_en': 'Peru',           'name_cn': '秘鲁'},
+    'es-PY': {'currency': 'PYG', 'name_en': 'Paraguay',       'name_cn': '巴拉圭'},
+    'es-SV': {'currency': 'USD', 'name_en': 'El Salvador',    'name_cn': '萨尔瓦多'},
+    'es-UY': {'currency': 'UYU', 'name_en': 'Uruguay',        'name_cn': '乌拉圭'},
+    'et-EE': {'currency': 'EUR', 'name_en': 'Estonia',        'name_cn': '爱沙尼亚'},
+    'fr-LU': {'currency': 'EUR', 'name_en': 'Luxembourg (FR)','name_cn': '卢森堡(法语)'},
+    'hr-HR': {'currency': 'EUR', 'name_en': 'Croatia',        'name_cn': '克罗地亚'},
+    'id-ID': {'currency': 'IDR', 'name_en': 'Indonesia',      'name_cn': '印度尼西亚'},
+    'is-IS': {'currency': 'ISK', 'name_en': 'Iceland',        'name_cn': '冰岛'},
+    'ka-GE': {'currency': 'GEL', 'name_en': 'Georgia',        'name_cn': '格鲁吉亚'},
+    'lt-LT': {'currency': 'EUR', 'name_en': 'Lithuania',      'name_cn': '立陶宛'},
+    'lv-LV': {'currency': 'EUR', 'name_en': 'Latvia',         'name_cn': '拉脱维亚'},
+    'mk-MK': {'currency': 'MKD', 'name_en': 'North Macedonia','name_cn': '北马其顿'},
+    'mt-MT': {'currency': 'EUR', 'name_en': 'Malta',          'name_cn': '马耳他'},
+    'ro-MD': {'currency': 'MDL', 'name_en': 'Moldova',        'name_cn': '摩尔多瓦'},
+    'ro-RO': {'currency': 'RON', 'name_en': 'Romania',        'name_cn': '罗马尼亚'},
+    'sl-SL': {'currency': 'EUR', 'name_en': 'Slovenia',       'name_cn': '斯洛文尼亚'},
+    'sq-AL': {'currency': 'ALL', 'name_en': 'Albania',        'name_cn': '阿尔巴尼亚'},
+    'th-TH': {'currency': 'THB', 'name_en': 'Thailand',       'name_cn': '泰国'},
+    'uk-UA': {'currency': 'UAH', 'name_en': 'Ukraine',        'name_cn': '乌克兰'},
+    'vi-VN': {'currency': 'VND', 'name_en': 'Vietnam',        'name_cn': '越南'},
+}
 
 
-def get_exchange_rates() -> Dict[str, float]:
-    """获取最新汇率（相对于CNY）"""
+def get_exchange_rates() -> Optional[dict]:
+    if not API_KEY:
+        print('ERROR: API_KEY environment variable not set.')
+        print('Get a free key at https://openexchangerates.org/')
+        return None
     try:
-        # 使用免费的汇率API
-        response = requests.get('https://api.exchangerate-api.com/v4/latest/CNY', timeout=10)
-        response.raise_for_status()
-        data = response.json()
-
-        # 转换为 1 外币 = X CNY 的格式
-        rates = {}
-        for currency, rate in data['rates'].items():
-            if rate > 0:
-                rates[currency] = 1 / rate  # 反转汇率
-
+        resp = requests.get(API_URL, timeout=10)
+        resp.raise_for_status()
+        data = resp.json()
+        rates = data.get('rates', {})
+        rates['USD'] = 1.0
+        print(f'Exchange rates fetched ({len(rates)} currencies)')
         return rates
     except Exception as e:
-        print(f"Error fetching exchange rates: {e}")
-        # 返回备用汇率（2024年4月大致汇率）
-        return {
-            'USD': 7.25, 'EUR': 7.85, 'GBP': 9.15, 'JPY': 0.048,
-            'KRW': 0.0054, 'THB': 0.20, 'VND': 0.00029, 'PHP': 0.13,
-            'MYR': 1.54, 'IDR': 0.00046, 'SGD': 5.38,
-            'BHD': 19.23, 'DZD': 0.054, 'EGP': 0.15, 'KWD': 23.62,
-            'LYD': 1.49, 'MAD': 0.72, 'OMR': 18.84, 'QAR': 1.99,
-            'TND': 2.32, 'BGN': 4.01, 'CHF': 8.12,
-            'BOB': 1.05, 'CRC': 0.014, 'GTQ': 0.93, 'HNL': 0.29,
-            'NIO': 0.20, 'PEN': 1.94, 'PYG': 0.00098, 'UYU': 0.19,
-            'ISK': 0.052, 'GEL': 2.71, 'MKD': 0.13, 'MDL': 0.41,
-            'RON': 1.58, 'ALL': 0.077, 'UAH': 0.18,
-        }
-
-
-def convert_to_cny(price: Optional[float], currency: str, rates: Dict[str, float]) -> Optional[float]:
-    """将价格转换为CNY"""
-    if price is None or price == 0:
+        print(f'ERROR fetching exchange rates: {e}')
         return None
 
+
+def to_cny(amount: float, currency: str, rates: dict) -> Optional[float]:
+    """Convert amount in given currency to CNY."""
     if currency == 'CNY':
-        return price
-
-    rate = rates.get(currency)
-    if rate is None:
-        print(f"Warning: No exchange rate for {currency}")
+        return round(amount, 2)
+    usd_rate = rates.get(currency)
+    cny_rate = rates.get('CNY')
+    if not usd_rate or not cny_rate:
+        return None
+    # amount / usd_rate = USD, USD * cny_rate = CNY
+    try:
+        result = Decimal(str(amount)) / Decimal(str(usd_rate)) * Decimal(str(cny_rate))
+        return float(result.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP))
+    except (InvalidOperation, ZeroDivisionError):
         return None
 
-    return round(price * rate, 2)
 
+def process():
+    with open('xbox_gamepass_prices.json', 'r', encoding='utf-8') as f:
+        raw_data = json.load(f)
 
-def process_prices():
-    """处理价格数据，转换为CNY"""
-    # 读取原始数据
-    try:
-        with open('xbox_gamepass_prices.json', 'r', encoding='utf-8') as f:
-            raw_data = json.load(f)
-    except FileNotFoundError:
-        print("Error: xbox_gamepass_prices.json not found. Run xbox_scraper.py first.")
+    rates = get_exchange_rates()
+    if not rates:
         return
 
-    # 获取汇率
-    print("Fetching exchange rates...")
-    rates = get_exchange_rates()
-    print(f"✓ Got rates for {len(rates)} currencies")
-
-    # 处理每个地区的数据
-    processed_data = []
+    updated_at = datetime.now(timezone.utc).strftime('%Y-%m-%d')
+    all_regions = []
 
     for item in raw_data:
         region_code = item['region_code']
+        info = REGION_INFO.get(region_code, {})
         currency = item['currency']
 
-        processed_item = {
+        entry = {
             'region_code': region_code,
+            'name_en': info.get('name_en', region_code),
+            'name_cn': info.get('name_cn', region_code),
             'currency': currency,
-            'url': item['url'],
             'scraped_at': item['scraped_at'],
         }
 
-        # 转换价格
-        if 'intro_price' in item and item['intro_price']:
-            processed_item['intro_price'] = item['intro_price']
-            processed_item['intro_price_cny'] = convert_to_cny(item['intro_price'], currency, rates)
-
-        if 'regular_price' in item and item['regular_price']:
-            processed_item['regular_price'] = item['regular_price']
-            processed_item['regular_price_cny'] = convert_to_cny(item['regular_price'], currency, rates)
-
-        if 'auto_renew_price' in item and item['auto_renew_price']:
-            processed_item['auto_renew_price'] = item['auto_renew_price']
-            processed_item['auto_renew_price_cny'] = convert_to_cny(item['auto_renew_price'], currency, rates)
-
-        # 保留原始字符串
-        if 'intro_price_raw' in item:
-            processed_item['intro_price_raw'] = item['intro_price_raw']
-        if 'regular_price_raw' in item:
-            processed_item['regular_price_raw'] = item['regular_price_raw']
-        if 'auto_renew_price_raw' in item:
-            processed_item['auto_renew_price_raw'] = item['auto_renew_price_raw']
-
         if 'error' in item:
-            processed_item['error'] = item['error']
+            entry['error'] = item['error']
+            all_regions.append(entry)
+            continue
 
-        processed_data.append(processed_item)
+        for price_type in ('intro_price', 'regular_price', 'auto_renew_price'):
+            raw_key = price_type + '_raw'
+            val = item.get(price_type)
+            raw = item.get(raw_key)
+            if val is not None:
+                entry[price_type] = val
+                entry[price_type + '_raw'] = raw
+                entry[price_type + '_cny'] = to_cny(val, currency, rates)
 
-    # 保存处理后的数据
-    output_file = 'xbox_gamepass_prices_processed.json'
-    with open(output_file, 'w', encoding='utf-8') as f:
-        json.dump(processed_data, f, ensure_ascii=False, indent=2)
+        all_regions.append(entry)
 
-    print(f"✓ Processed data saved to {output_file}")
+    # Build top-10 ranking by auto_renew_price_cny
+    rankable = [r for r in all_regions if r.get('auto_renew_price_cny') is not None]
+    ranked = sorted(rankable, key=lambda x: x['auto_renew_price_cny'])
 
-    # 生成排行榜
-    generate_ranking(processed_data)
-
-
-def generate_ranking(data: list):
-    """生成价格排行榜"""
-    # 按自动续订价格排序（最常用的价格）
-    valid_prices = [
-        item for item in data
-        if item.get('auto_renew_price_cny') is not None
+    top10 = [
+        {
+            'rank': i + 1,
+            'region_code': r['region_code'],
+            'name_en': r['name_en'],
+            'name_cn': r['name_cn'],
+            'currency': r['currency'],
+            'auto_renew_price': r['auto_renew_price'],
+            'auto_renew_price_cny': r['auto_renew_price_cny'],
+        }
+        for i, r in enumerate(ranked[:10])
     ]
 
-    if not valid_prices:
-        print("No valid prices to rank")
-        return
-
-    # 排序
-    ranked = sorted(valid_prices, key=lambda x: x['auto_renew_price_cny'])
-
-    print("\n" + "="*60)
-    print("TOP 10 CHEAPEST REGIONS (Auto-Renew Price)")
-    print("="*60)
-
-    for i, item in enumerate(ranked[:10], 1):
-        region = item['region_code']
-        price_local = item['auto_renew_price']
-        currency = item['currency']
-        price_cny = item['auto_renew_price_cny']
-
-        print(f"{i:2d}. {region:8s} {price_local:10.2f} {currency:4s} = ¥{price_cny:7.2f} CNY")
-
-    # 保存排行榜到文件
-    ranking_data = {
-        'generated_at': datetime.utcnow().isoformat() + 'Z',
-        'ranking': [
-            {
-                'rank': i,
-                'region_code': item['region_code'],
-                'currency': item['currency'],
-                'auto_renew_price': item['auto_renew_price'],
-                'auto_renew_price_cny': item['auto_renew_price_cny'],
-            }
-            for i, item in enumerate(ranked, 1)
-        ]
+    output = {
+        '_updated_at': updated_at,
+        '_top10_cheapest_auto_renew': {
+            'description': 'Top 10 cheapest regions for Xbox Game Pass PC (auto-renew monthly price, converted to CNY)',
+            'updated_at': updated_at,
+            'data': top10,
+        },
+        'regions': all_regions,
     }
 
-    with open('xbox_gamepass_ranking.json', 'w', encoding='utf-8') as f:
-        json.dump(ranking_data, f, ensure_ascii=False, indent=2)
+    with open('xbox_gamepass_prices_processed.json', 'w', encoding='utf-8') as f:
+        json.dump(output, f, ensure_ascii=False, indent=2)
 
-    print(f"\n✓ Ranking saved to xbox_gamepass_ranking.json")
+    print(f'\nProcessed {len(all_regions)} regions -> xbox_gamepass_prices_processed.json')
+    print(f'\nTop 10 cheapest (auto-renew):')
+    for item in top10:
+        print(f"  {item['rank']:2d}. {item['region_code']:8s} {item['auto_renew_price']:10.2f} {item['currency']:4s} = ¥{item['auto_renew_price_cny']:.2f}")
 
 
 if __name__ == '__main__':
-    process_prices()
+    process()

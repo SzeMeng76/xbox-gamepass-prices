@@ -2,9 +2,8 @@ name: Update Xbox Game Pass Prices
 
 on:
   schedule:
-    # Run every day at 9:00 AM UTC
     - cron: '0 9 * * *'
-  workflow_dispatch:  # Allow manual trigger
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -30,7 +29,7 @@ jobs:
           playwright install chromium
           playwright install-deps chromium
 
-      - name: Archive old data
+      - name: Archive previous data
         run: |
           mkdir -p archive
           timestamp=$(date +%Y%m%d_%H%M%S)
@@ -38,21 +37,22 @@ jobs:
             cp xbox_gamepass_prices.json archive/xbox_gamepass_prices_${timestamp}.json
           fi
 
-      - name: Run scraper
+      - name: Scrape prices
         run: python xbox_scraper.py
 
-      - name: Convert to CNY
+      - name: Convert to CNY and generate ranking
+        env:
+          API_KEY: ${{ secrets.OPENEXCHANGERATES_API_KEY }}
         run: python xbox_rate_converter.py
 
-      - name: Detect price changes
+      - name: Detect price changes and update changelog
         run: python xbox_price_change_detector.py
 
-      - name: Update README with ranking
-        run: python xbox_readme_updater.py
-
-      - name: Commit and push changes
+      - name: Commit and push
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add xbox_gamepass_prices.json xbox_gamepass_prices_processed.json xbox_gamepass_ranking.json xbox_price_changes_latest.json CHANGELOG.md README.md archive/
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update Xbox Game Pass prices - $(date -u +%Y-%m-%d)" && git push)
+          git add xbox_gamepass_prices.json xbox_gamepass_prices_processed.json CHANGELOG.md archive/
+          git add xbox_price_changes_latest.json 2>/dev/null || true
+          git diff --quiet && git diff --staged --quiet || \
+            git commit -m "chore: update Xbox Game Pass prices - $(date -u +%Y-%m-%d)" && git push
