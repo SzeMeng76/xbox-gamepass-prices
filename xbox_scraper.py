@@ -70,31 +70,61 @@ REGION_INFO = {
 }
 
 
-def clean_price(raw: str, decimal_sep: str, thousand_sep: str) -> Optional[float]:
-    """Parse a price string using region-specific separators."""
+def clean_price(raw: str) -> Optional[float]:
+    """
+    Auto-detect decimal/thousand separators from the raw string itself.
+
+    Rules (applied to digits-and-separators only):
+    - If last separator is ',' and it has exactly 2 digits after → decimal ','
+    - If last separator is '.' and it has exactly 2 digits after → decimal '.'
+    - If separator appears with exactly 3 digits after (and more digits before) → thousand separator
+    - Single separator with 3 digits after and nothing before → could be thousand, treat as integer
+    """
     if not raw:
         return None
-    s = raw.strip()
-    # Remove everything except digits and separators
-    s = re.sub(r'[^\d' + re.escape(decimal_sep) + re.escape(thousand_sep) + r']', '', s)
+    # Strip to digits, dots, commas only
+    s = re.sub(r'[^\d.,]', '', raw.strip())
     if not s:
         return None
-    # Remove thousand separators
-    s = s.replace(thousand_sep, '')
-    # Normalize decimal separator to '.'
-    if decimal_sep != '.':
-        s = s.replace(decimal_sep, '.')
+
+    has_dot = '.' in s
+    has_comma = ',' in s
+
+    if has_dot and has_comma:
+        # Both present: whichever comes last is the decimal separator
+        if s.rindex('.') > s.rindex(','):
+            # e.g. 1,234.56 or 1,350.00
+            s = s.replace(',', '')
+        else:
+            # e.g. 1.234,56 or 23.990,00
+            s = s.replace('.', '').replace(',', '.')
+    elif has_comma:
+        after_comma = s.rsplit(',', 1)[-1]
+        if len(after_comma) == 2:
+            # e.g. 11,99 → decimal comma
+            s = s.replace(',', '.')
+        elif len(after_comma) == 3:
+            # e.g. 3,500 → thousand comma
+            s = s.replace(',', '')
+        else:
+            s = s.replace(',', '')
+    elif has_dot:
+        after_dot = s.rsplit('.', 1)[-1]
+        if len(after_dot) == 2:
+            # e.g. 4.50 → decimal dot (keep as-is)
+            pass
+        elif len(after_dot) == 3:
+            # e.g. 2.170 → thousand dot
+            s = s.replace('.', '')
+        # else keep as-is
+
     try:
         return float(s)
     except Exception:
         return None
 
 
-def extract_prices(html: str, region_code: str) -> Dict[str, Any]:
-    info = REGION_INFO.get(region_code, {'decimal': '.', 'thousand': ','})
-    dec = info['decimal']
-    tho = info['thousand']
-
+def extract_prices(html: str) -> Dict[str, Any]:
     result: Dict[str, Any] = {
         'intro_price_raw': None,
         'regular_price_raw': None,
@@ -104,9 +134,8 @@ def extract_prices(html: str, region_code: str) -> Dict[str, Any]:
         'auto_renew_price': None,
     }
 
-    # Number pattern using region separators
-    # matches e.g. "4.500" (BHD with . thousand) or "79.000,00" (VND with . thousand , decimal)
-    num = r'[\d]+(?:[' + re.escape(tho) + r'][\d]+)*(?:[' + re.escape(dec) + r'][\d]+)?'
+    # Generic number pattern — matches any combo of digits, dots, commas
+    num = r'[\d]+(?:[.,][\d]+)*'
 
     # ── intro + regular from __PRELOADED_STATE__ (unicode-escaped JSON in <script>)
     # Examples found in debug:
@@ -129,14 +158,16 @@ def extract_prices(html: str, region_code: str) -> Dict[str, Any]:
         rf'seharga\s+[^\d]*({num})[^,\"]*,\s*lalu\s+[^\d]*({num})\s*[^\"]*(?:\\u002F|/)bulan',
         # Romanian: "pentru X, apoi Y/lună"
         rf'pentru\s+[^\d]*({num})[^,\"]*,\s*apoi\s+[^\d]*({num})\s*[^\"]*(?:\\u002F|/)lun',
+        # Thai: "เพียง X จากนั้น Y/เดือน"
+        rf'เพียง\s+[^\d]*({num})\s*[^\d,\"]*(?:จากนั้น|,)\s*[^\d]*({num})\s*[^\"]*(?:\\u002F|/)เดือน',
     ]
 
     for pattern in intro_patterns:
         m = re.search(pattern, html, re.IGNORECASE)
         if m:
             raw1, raw2 = m.group(1), m.group(2)
-            p1 = clean_price(raw1, dec, tho)
-            p2 = clean_price(raw2, dec, tho)
+            p1 = clean_price(raw1)
+            p2 = clean_price(raw2)
             if p1 and p2 and p1 != p2:
                 result['intro_price_raw'] = raw1
                 result['regular_price_raw'] = raw2
@@ -161,15 +192,15 @@ def extract_prices(html: str, region_code: str) -> Dict[str, Any]:
         rf'diperpanjang otomatis seharga\s+[^\d]*({num})\s*[^\/\"<]*(?:/|\\u002F)bulan',
         # Romanian
         rf'reînnoire automat[ă]\s+[^\d]*({num})\s*[^\/\"<]*(?:/|\\u002F)lun',
-        # Thai
-        rf'ต่ออายุอัตโนมัติ[^฿\d]*({num})\s*[^\/\"<]*(?:/|ต่อ)เดือน',
+        # Thai: "โดยอัตโนมัติในราคา ฿129.00 บาทต่อเดือน"
+        rf'อัตโนมัติ[^฿\d]*[฿\s]*({num})\s*[^\/\"<]*(?:/|ต่อ)เดือน',
     ]
 
     for pattern in auto_patterns:
         m = re.search(pattern, html, re.IGNORECASE)
         if m:
             raw = m.group(1)
-            price = clean_price(raw, dec, tho)
+            price = clean_price(raw)
             if price:
                 result['auto_renew_price_raw'] = raw
                 result['auto_renew_price'] = price
@@ -188,7 +219,7 @@ async def fetch_xbox_price(browser, region_code: str) -> Dict[str, Any]:
         await page.goto(url, wait_until='networkidle', timeout=30000)
         html = await page.content()
 
-        prices = extract_prices(html, region_code)
+        prices = extract_prices(html)
 
         result: Dict[str, Any] = {
             'region_code': region_code,
