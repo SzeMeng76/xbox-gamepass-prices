@@ -126,7 +126,7 @@ jobs:
           fi
 
           git commit -m "${COMMIT_MSG}"
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:master
           echo "Changes committed and pushed"
 
       - name: Upload artifacts
