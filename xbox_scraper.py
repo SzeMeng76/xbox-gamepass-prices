@@ -48,8 +48,6 @@ def clean_price(price_str: str) -> Optional[float]:
     cleaned = re.sub(r'[^\d.,]', '', price_str)
 
     # 处理不同的数字格式
-    # 1.234,56 -> 1234.56
-    # 1,234.56 -> 1234.56
     if ',' in cleaned and '.' in cleaned:
         if cleaned.rindex(',') > cleaned.rindex('.'):
             # 欧洲格式: 1.234,56
@@ -70,109 +68,112 @@ def clean_price(price_str: str) -> Optional[float]:
         return None
 
 
-async def fetch_xbox_price(region_code: str) -> Dict[str, Any]:
+async def fetch_xbox_price(browser, region_code: str) -> Dict[str, Any]:
     """获取指定地区的Xbox Game Pass PC价格"""
     url = f"https://www.xbox.com/{region_code}/xbox-game-pass/pc-game-pass"
     currency = REGION_CURRENCY.get(region_code, 'USD')
 
-    async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=True)
-        page = await browser.new_page()
+    page = await browser.new_page()
 
-        try:
-            print(f"[{region_code}] Fetching...")
+    try:
+        print(f"[{region_code}] Fetching...")
 
-            await page.goto(url, wait_until='networkidle', timeout=30000)
-            await page.wait_for_timeout(3000)
+        await page.goto(url, wait_until='domcontentloaded', timeout=20000)
+        await page.wait_for_timeout(2000)
 
-            html = await page.content()
+        html = await page.content()
 
-            result = {
-                'region_code': region_code,
-                'currency': currency,
-                'url': url,
-                'intro_price_raw': None,
-                'regular_price_raw': None,
-                'auto_renew_price_raw': None,
-                'intro_price': None,
-                'regular_price': None,
-                'auto_renew_price': None,
-                'scraped_at': datetime.utcnow().isoformat() + 'Z',
-            }
+        result = {
+            'region_code': region_code,
+            'currency': currency,
+            'url': url,
+            'intro_price_raw': None,
+            'regular_price_raw': None,
+            'auto_renew_price_raw': None,
+            'intro_price': None,
+            'regular_price': None,
+            'auto_renew_price': None,
+            'scraped_at': datetime.utcnow().isoformat() + 'Z',
+        }
 
-            # 查找所有价格（通用模式）
-            price_pattern = r'(\d{1,3}(?:[.,]\d{3})*(?:[.,]\d{2})?)'
+        # 查找所有价格（通用模式）
+        price_pattern = r'(\d{1,3}(?:[.,]\d{3})*(?:[.,]\d{2})?)'
 
-            # 模式1: 查找 "for X, then Y" 或 "với X, sau đó là Y"
-            intro_patterns = [
-                rf'for\s*[^\d]*{price_pattern}[^,]*,?\s*then\s*[^\d]*{price_pattern}',
-                rf'với\s*{price_pattern}[^,]*,?\s*sau đó là\s*{price_pattern}',
-            ]
+        # 模式1: 查找 "for X, then Y" 或 "với X, sau đó là Y"
+        intro_patterns = [
+            rf'for\s*[^\d]*{price_pattern}[^,]*,?\s*then\s*[^\d]*{price_pattern}',
+            rf'với\s*{price_pattern}[^,]*,?\s*sau đó là\s*{price_pattern}',
+        ]
 
-            for pattern in intro_patterns:
-                matches = re.search(pattern, html, re.IGNORECASE | re.DOTALL)
-                if matches:
-                    result['intro_price_raw'] = matches.group(1)
-                    result['regular_price_raw'] = matches.group(2)
-                    result['intro_price'] = clean_price(matches.group(1))
-                    result['regular_price'] = clean_price(matches.group(2))
-                    break
+        for pattern in intro_patterns:
+            matches = re.search(pattern, html, re.IGNORECASE | re.DOTALL)
+            if matches:
+                result['intro_price_raw'] = matches.group(1)
+                result['regular_price_raw'] = matches.group(2)
+                result['intro_price'] = clean_price(matches.group(1))
+                result['regular_price'] = clean_price(matches.group(2))
+                break
 
-            # 模式2: 查找自动续订价格
-            auto_patterns = [
-                rf'mức phí\s*{price_pattern}[^/]*/tháng',  # 越南语
-                rf'at\s*[^\d]*{price_pattern}\s*/\s*month',  # 英语
-                rf'renew.*?at\s*[^\d]*{price_pattern}',  # 英语变体
-            ]
+        # 模式2: 查找自动续订价格
+        auto_patterns = [
+            rf'mức phí\s*{price_pattern}[^/]*/tháng',  # 越南语
+            rf'at\s*[^\d]*{price_pattern}\s*/\s*month',  # 英语
+            rf'renew.*?at\s*[^\d]*{price_pattern}',  # 英语变体
+        ]
 
-            for pattern in auto_patterns:
-                auto_match = re.search(pattern, html, re.IGNORECASE | re.DOTALL)
-                if auto_match:
-                    result['auto_renew_price_raw'] = auto_match.group(1)
-                    result['auto_renew_price'] = clean_price(auto_match.group(1))
-                    break
+        for pattern in auto_patterns:
+            auto_match = re.search(pattern, html, re.IGNORECASE | re.DOTALL)
+            if auto_match:
+                result['auto_renew_price_raw'] = auto_match.group(1)
+                result['auto_renew_price'] = clean_price(auto_match.group(1))
+                break
 
-            # 打印结果
-            if result['intro_price'] or result['regular_price'] or result['auto_renew_price']:
-                prices = []
-                if result['intro_price']:
-                    prices.append(f"intro={result['intro_price']}")
-                if result['regular_price']:
-                    prices.append(f"regular={result['regular_price']}")
-                if result['auto_renew_price']:
-                    prices.append(f"auto={result['auto_renew_price']}")
-                print(f"[{region_code}] ✓ {', '.join(prices)}")
-            else:
-                print(f"[{region_code}] ✗ No prices found")
+        # 打印结果
+        if result['intro_price'] or result['regular_price'] or result['auto_renew_price']:
+            prices = []
+            if result['intro_price']:
+                prices.append(f"intro={result['intro_price']}")
+            if result['regular_price']:
+                prices.append(f"regular={result['regular_price']}")
+            if result['auto_renew_price']:
+                prices.append(f"auto={result['auto_renew_price']}")
+            print(f"[{region_code}] ✓ {', '.join(prices)}")
+        else:
+            print(f"[{region_code}] ✗ No prices found")
 
-            return result
+        return result
 
-        except Exception as e:
-            print(f"[{region_code}] ✗ Error: {e}")
-            return {
-                'region_code': region_code,
-                'currency': currency,
-                'url': url,
-                'error': str(e),
-                'scraped_at': datetime.utcnow().isoformat() + 'Z',
-            }
-        finally:
-            await browser.close()
+    except Exception as e:
+        print(f"[{region_code}] ✗ Error: {e}")
+        return {
+            'region_code': region_code,
+            'currency': currency,
+            'url': url,
+            'error': str(e),
+            'scraped_at': datetime.utcnow().isoformat() + 'Z',
+        }
+    finally:
+        await page.close()
 
 
 async def main():
     """主函数：爬取所有地区的价格"""
-    print(f"Starting to scrape {len(REGIONS)} regions...\n")
+    print(f"Starting to scrape {len(REGIONS)} regions...")
+    print("="*60)
 
     results = []
 
-    # 逐个爬取
-    for region in REGIONS:
-        result = await fetch_xbox_price(region)
-        results.append(result)
+    async with async_playwright() as p:
+        browser = await p.chromium.launch(headless=True)
 
-        # 延迟避免请求过快
-        await asyncio.sleep(2)
+        for region in REGIONS:
+            result = await fetch_xbox_price(browser, region)
+            results.append(result)
+
+            # 短暂延迟避免请求过快
+            await asyncio.sleep(1)
+
+        await browser.close()
 
     # 保存结果
     output_file = 'xbox_gamepass_prices.json'
@@ -180,7 +181,8 @@ async def main():
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(results, f, ensure_ascii=False, indent=2)
 
-    print(f"\n✓ Completed! Results saved to {output_file}")
+    print("="*60)
+    print(f"✓ Completed! Results saved to {output_file}")
 
     # 统计
     success_count = sum(1 for r in results if r.get('intro_price') or r.get('regular_price') or r.get('auto_renew_price'))
