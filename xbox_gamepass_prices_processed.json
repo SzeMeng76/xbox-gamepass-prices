@@ -1,1 +1,989 @@
-[]
+{
+  "_updated_at": "2026-04-22",
+  "_top10_cheapest_pc_game_pass": {
+    "description": "Top 10 cheapest regions for PC Game Pass (auto-renew monthly price, converted to CNY)",
+    "updated_at": "2026-04-22",
+    "data": [
+      {
+        "rank": 1,
+        "region_code": "vi-VN",
+        "name_en": "Vietnam",
+        "name_cn": "越南",
+        "currency": "VND",
+        "auto_renew_price": 79000.0,
+        "auto_renew_price_cny": 20.49
+      },
+      {
+        "rank": 2,
+        "region_code": "en-PH",
+        "name_en": "Philippines",
+        "name_cn": "菲律宾",
+        "currency": "PHP",
+        "auto_renew_price": 225.0,
+        "auto_renew_price_cny": 25.52
+      },
+      {
+        "rank": 3,
+        "region_code": "th-TH",
+        "name_en": "Thailand",
+        "name_cn": "泰国",
+        "currency": "THB",
+        "auto_renew_price": 129.0,
+        "auto_renew_price_cny": 27.3
+      },
+      {
+        "rank": 4,
+        "region_code": "id-ID",
+        "name_en": "Indonesia",
+        "name_cn": "印度尼西亚",
+        "currency": "IDR",
+        "auto_renew_price": 82999.0,
+        "auto_renew_price_cny": 32.9
+      },
+      {
+        "rank": 5,
+        "region_code": "en-MY",
+        "name_en": "Malaysia",
+        "name_cn": "马来西亚",
+        "currency": "MYR",
+        "auto_renew_price": 20.0,
+        "auto_renew_price_cny": 34.55
+      },
+      {
+        "rank": 6,
+        "region_code": "uk-UA",
+        "name_en": "Ukraine",
+        "name_cn": "乌克兰",
+        "currency": "UAH",
+        "auto_renew_price": 230.0,
+        "auto_renew_price_cny": 35.57
+      },
+      {
+        "rank": 7,
+        "region_code": "ar-MA",
+        "name_en": "Morocco",
+        "name_cn": "摩洛哥",
+        "currency": "MAD",
+        "auto_renew_price": 60.0,
+        "auto_renew_price_cny": 44.35
+      },
+      {
+        "rank": 8,
+        "region_code": "ar-LY",
+        "name_en": "Libya",
+        "name_cn": "利比亚",
+        "currency": "USD",
+        "auto_renew_price": 6.99,
+        "auto_renew_price_cny": 47.73
+      },
+      {
+        "rank": 9,
+        "region_code": "bg-BG",
+        "name_en": "Bulgaria",
+        "name_cn": "保加利亚",
+        "currency": "BGN",
+        "auto_renew_price": 11.99,
+        "auto_renew_price_cny": 49.02
+      },
+      {
+        "rank": 10,
+        "region_code": "es-BO",
+        "name_en": "Bolivia",
+        "name_cn": "玻利维亚",
+        "currency": "USD",
+        "auto_renew_price": 7.99,
+        "auto_renew_price_cny": 54.56
+      }
+    ]
+  },
+  "regions": [
+    {
+      "region_code": "ar-BH",
+      "name_en": "Bahrain",
+      "name_cn": "巴林",
+      "currency": "BHD",
+      "scraped_at": "2026-04-22T19:42:44.343089+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 0.4,
+          "intro_price_raw": "0.400",
+          "intro_price_cny": 7.24,
+          "regular_price": 3.5,
+          "regular_price_raw": "3,500",
+          "regular_price_cny": 63.36
+        }
+      ]
+    },
+    {
+      "region_code": "ar-DZ",
+      "name_en": "Algeria",
+      "name_cn": "阿尔及利亚",
+      "currency": "DZD",
+      "scraped_at": "2026-04-22T19:42:48.819400+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 140.0,
+          "intro_price_raw": "140.00",
+          "intro_price_cny": 7.22,
+          "regular_price": 1080.0,
+          "regular_price_raw": "1,080.00",
+          "regular_price_cny": 55.66
+        }
+      ]
+    },
+    {
+      "region_code": "ar-EG",
+      "name_en": "Egypt",
+      "name_cn": "埃及",
+      "currency": "EGP",
+      "scraped_at": "2026-04-22T19:42:52.716119+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 50000.0,
+          "intro_price_raw": "50,000",
+          "intro_price_cny": 6563.96,
+          "regular_price": 190000.0,
+          "regular_price_raw": "190,000",
+          "regular_price_cny": 24943.04
+        }
+      ]
+    },
+    {
+      "region_code": "ar-KW",
+      "name_en": "Kuwait",
+      "name_cn": "科威特",
+      "currency": "KWD",
+      "scraped_at": "2026-04-22T19:42:57.116876+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 0.3,
+          "intro_price_raw": "0.300",
+          "intro_price_cny": 6.64,
+          "regular_price": 2.75,
+          "regular_price_raw": "2,750",
+          "regular_price_cny": 60.91
+        }
+      ]
+    },
+    {
+      "region_code": "ar-LY",
+      "name_en": "Libya",
+      "name_cn": "利比亚",
+      "currency": "USD",
+      "scraped_at": "2026-04-22T19:43:01.179030+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 1.0,
+          "intro_price_raw": "1.00",
+          "intro_price_cny": 6.83,
+          "regular_price": 6.99,
+          "regular_price_raw": "6.99",
+          "regular_price_cny": 47.73
+        }
+      ]
+    },
+    {
+      "region_code": "ar-MA",
+      "name_en": "Morocco",
+      "name_cn": "摩洛哥",
+      "currency": "MAD",
+      "scraped_at": "2026-04-22T19:43:06.185013+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 10.99,
+          "intro_price_raw": "10.99",
+          "intro_price_cny": 8.12,
+          "regular_price": 60.0,
+          "regular_price_raw": "60.00",
+          "regular_price_cny": 44.35
+        }
+      ]
+    },
+    {
+      "region_code": "ar-OM",
+      "name_en": "Oman",
+      "name_cn": "阿曼",
+      "currency": "OMR",
+      "scraped_at": "2026-04-22T19:43:10.473350+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 0.4,
+          "intro_price_raw": "0.400",
+          "intro_price_cny": 7.1,
+          "regular_price": 3.5,
+          "regular_price_raw": "3,500",
+          "regular_price_cny": 62.15
+        }
+      ]
+    },
+    {
+      "region_code": "ar-QA",
+      "name_en": "Qatar",
+      "name_cn": "卡塔尔",
+      "currency": "QAR",
+      "scraped_at": "2026-04-22T19:43:14.625561+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 3.75,
+          "intro_price_raw": "3.75",
+          "intro_price_cny": 7.02,
+          "regular_price": 30.0,
+          "regular_price_raw": "30.00",
+          "regular_price_cny": 56.2
+        }
+      ]
+    },
+    {
+      "region_code": "ar-TN",
+      "name_en": "Tunisia",
+      "name_cn": "突尼斯",
+      "currency": "TND",
+      "scraped_at": "2026-04-22T19:43:19.103561+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 3.15,
+          "intro_price_raw": "3,150",
+          "intro_price_cny": 7.48,
+          "regular_price": 23.99,
+          "regular_price_raw": "23,990",
+          "regular_price_cny": 56.99
+        }
+      ]
+    },
+    {
+      "region_code": "bg-BG",
+      "name_en": "Bulgaria",
+      "name_cn": "保加利亚",
+      "currency": "BGN",
+      "scraped_at": "2026-04-22T19:43:24.132786+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 1.0,
+          "intro_price_raw": "1,00",
+          "intro_price_cny": 4.09,
+          "regular_price": 11.99,
+          "regular_price_raw": "11,99",
+          "regular_price_cny": 49.02
+        }
+      ]
+    },
+    {
+      "region_code": "de-LI",
+      "name_en": "Liechtenstein",
+      "name_cn": "列支敦士登",
+      "currency": "CHF",
+      "scraped_at": "2026-04-22T19:43:28.220130+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 1.0,
+          "intro_price_raw": "1",
+          "intro_price_cny": 8.71,
+          "regular_price": 14.5,
+          "regular_price_raw": "14,50",
+          "regular_price_cny": 126.23,
+          "auto_renew_price": 14.5,
+          "auto_renew_price_raw": "14.50",
+          "auto_renew_price_cny": 126.23
+        }
+      ]
+    },
+    {
+      "region_code": "de-LU",
+      "name_en": "Luxembourg",
+      "name_cn": "卢森堡",
+      "currency": "EUR",
+      "scraped_at": "2026-04-22T19:43:32.459716+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 1.0,
+          "intro_price_raw": "1",
+          "intro_price_cny": 7.99,
+          "regular_price": 14.99,
+          "regular_price_raw": "14,99",
+          "regular_price_cny": 119.84,
+          "auto_renew_price": 11.99,
+          "auto_renew_price_raw": "11,99",
+          "auto_renew_price_cny": 95.86
+        }
+      ]
+    },
+    {
+      "region_code": "en-CY",
+      "name_en": "Cyprus",
+      "name_cn": "塞浦路斯",
+      "currency": "EUR",
+      "scraped_at": "2026-04-22T19:43:37.023896+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 1.0,
+          "intro_price_raw": "1.00",
+          "intro_price_cny": 7.99,
+          "regular_price": 11.99,
+          "regular_price_raw": "11.99",
+          "regular_price_cny": 95.86
+        }
+      ]
+    },
+    {
+      "region_code": "en-MY",
+      "name_en": "Malaysia",
+      "name_cn": "马来西亚",
+      "currency": "MYR",
+      "scraped_at": "2026-04-22T19:43:40.838518+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 5.0,
+          "intro_price_raw": "5.00",
+          "intro_price_cny": 8.64,
+          "regular_price": 20.0,
+          "regular_price_raw": "20.00",
+          "regular_price_cny": 34.55
+        }
+      ]
+    },
+    {
+      "region_code": "en-PH",
+      "name_en": "Philippines",
+      "name_cn": "菲律宾",
+      "currency": "PHP",
+      "scraped_at": "2026-04-22T19:43:45.237825+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 59.0,
+          "intro_price_raw": "59.00",
+          "intro_price_cny": 6.69,
+          "regular_price": 225.0,
+          "regular_price_raw": "225.00",
+          "regular_price_cny": 25.52
+        }
+      ]
+    },
+    {
+      "region_code": "en-US",
+      "name_en": "United States",
+      "name_cn": "美国",
+      "currency": "USD",
+      "scraped_at": "2026-04-22T19:43:51.072890+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "regular_price": 13.99,
+          "regular_price_raw": "13.99",
+          "regular_price_cny": 95.52
+        },
+        {
+          "plan": "Game Pass Core",
+          "intro_price": 1.0,
+          "intro_price_raw": "1",
+          "intro_price_cny": 6.83,
+          "regular_price": 9.99,
+          "regular_price_raw": "9.99",
+          "regular_price_cny": 68.21
+        },
+        {
+          "plan": "Game Pass Standard",
+          "intro_price": 1.0,
+          "intro_price_raw": "1",
+          "intro_price_cny": 6.83,
+          "regular_price": 14.99,
+          "regular_price_raw": "14.99",
+          "regular_price_cny": 102.35
+        },
+        {
+          "plan": "Game Pass Ultimate",
+          "regular_price": 22.99,
+          "regular_price_raw": "22.99",
+          "regular_price_cny": 156.98
+        }
+      ]
+    },
+    {
+      "region_code": "es-BO",
+      "name_en": "Bolivia",
+      "name_cn": "玻利维亚",
+      "currency": "USD",
+      "scraped_at": "2026-04-22T19:43:55.664875+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 1.0,
+          "intro_price_raw": "1",
+          "intro_price_cny": 6.83,
+          "regular_price": 9.99,
+          "regular_price_raw": "9.99",
+          "regular_price_cny": 68.21,
+          "auto_renew_price": 7.99,
+          "auto_renew_price_raw": "7.99",
+          "auto_renew_price_cny": 54.56
+        }
+      ]
+    },
+    {
+      "region_code": "es-CR",
+      "name_en": "Costa Rica",
+      "name_cn": "哥斯达黎加",
+      "currency": "CRC",
+      "scraped_at": "2026-04-22T19:44:01.698180+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 615.0,
+          "intro_price_raw": "615",
+          "intro_price_cny": 9.21,
+          "regular_price": 5799.0,
+          "regular_price_raw": "5.799",
+          "regular_price_cny": 86.87,
+          "auto_renew_price": 4599.0,
+          "auto_renew_price_raw": "4.599",
+          "auto_renew_price_cny": 68.89
+        }
+      ]
+    },
+    {
+      "region_code": "es-EC",
+      "name_en": "Ecuador",
+      "name_cn": "厄瓜多尔",
+      "currency": "USD",
+      "scraped_at": "2026-04-22T19:44:06.303663+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 1.0,
+          "intro_price_raw": "1",
+          "intro_price_cny": 6.83,
+          "regular_price": 9.99,
+          "regular_price_raw": "9.99",
+          "regular_price_cny": 68.21,
+          "auto_renew_price": 7.99,
+          "auto_renew_price_raw": "7,99",
+          "auto_renew_price_cny": 54.56
+        }
+      ]
+    },
+    {
+      "region_code": "es-GT",
+      "name_en": "Guatemala",
+      "name_cn": "危地马拉",
+      "currency": "GTQ",
+      "scraped_at": "2026-04-22T19:44:11.045068+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 7.99,
+          "intro_price_raw": "7.99",
+          "intro_price_cny": 7.13,
+          "regular_price": 82.99,
+          "regular_price_raw": "82.99",
+          "regular_price_cny": 74.1,
+          "auto_renew_price": 65.99,
+          "auto_renew_price_raw": "65.99",
+          "auto_renew_price_cny": 58.92
+        }
+      ]
+    },
+    {
+      "region_code": "es-HN",
+      "name_en": "Honduras",
+      "name_cn": "洪都拉斯",
+      "currency": "USD",
+      "scraped_at": "2026-04-22T19:44:15.520281+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 1.0,
+          "intro_price_raw": "1",
+          "intro_price_cny": 6.83,
+          "regular_price": 9.99,
+          "regular_price_raw": "9.99",
+          "regular_price_cny": 68.21,
+          "auto_renew_price": 7.99,
+          "auto_renew_price_raw": "7.99",
+          "auto_renew_price_cny": 54.56
+        }
+      ]
+    },
+    {
+      "region_code": "es-NI",
+      "name_en": "Nicaragua",
+      "name_cn": "尼加拉瓜",
+      "currency": "USD",
+      "scraped_at": "2026-04-22T19:44:20.115909+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 1.0,
+          "intro_price_raw": "1",
+          "intro_price_cny": 6.83,
+          "regular_price": 9.99,
+          "regular_price_raw": "9.99",
+          "regular_price_cny": 68.21,
+          "auto_renew_price": 7.99,
+          "auto_renew_price_raw": "7.99",
+          "auto_renew_price_cny": 54.56
+        }
+      ]
+    },
+    {
+      "region_code": "es-PA",
+      "name_en": "Panama",
+      "name_cn": "巴拿马",
+      "currency": "USD",
+      "scraped_at": "2026-04-22T19:44:25.099861+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 1.0,
+          "intro_price_raw": "1",
+          "intro_price_cny": 6.83,
+          "regular_price": 9.99,
+          "regular_price_raw": "9.99",
+          "regular_price_cny": 68.21,
+          "auto_renew_price": 7.99,
+          "auto_renew_price_raw": "7.99",
+          "auto_renew_price_cny": 54.56
+        }
+      ]
+    },
+    {
+      "region_code": "es-PE",
+      "name_en": "Peru",
+      "name_cn": "秘鲁",
+      "currency": "PEN",
+      "scraped_at": "2026-04-22T19:44:30.262090+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 3.99,
+          "intro_price_raw": "3.99",
+          "intro_price_cny": 7.92,
+          "regular_price": 41.99,
+          "regular_price_raw": "41.99",
+          "regular_price_cny": 83.38,
+          "auto_renew_price": 32.99,
+          "auto_renew_price_raw": "32.99",
+          "auto_renew_price_cny": 65.51
+        }
+      ]
+    },
+    {
+      "region_code": "es-PY",
+      "name_en": "Paraguay",
+      "name_cn": "巴拉圭",
+      "currency": "USD",
+      "scraped_at": "2026-04-22T19:44:35.390018+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 1.0,
+          "intro_price_raw": "1",
+          "intro_price_cny": 6.83,
+          "regular_price": 9.99,
+          "regular_price_raw": "9.99",
+          "regular_price_cny": 68.21,
+          "auto_renew_price": 7.99,
+          "auto_renew_price_raw": "7.99",
+          "auto_renew_price_cny": 54.56
+        }
+      ]
+    },
+    {
+      "region_code": "es-SV",
+      "name_en": "El Salvador",
+      "name_cn": "萨尔瓦多",
+      "currency": "USD",
+      "scraped_at": "2026-04-22T19:44:41.727678+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 1.0,
+          "intro_price_raw": "1",
+          "intro_price_cny": 6.83,
+          "regular_price": 9.99,
+          "regular_price_raw": "9.99",
+          "regular_price_cny": 68.21,
+          "auto_renew_price": 7.99,
+          "auto_renew_price_raw": "7.99",
+          "auto_renew_price_cny": 54.56
+        }
+      ]
+    },
+    {
+      "region_code": "es-UY",
+      "name_en": "Uruguay",
+      "name_cn": "乌拉圭",
+      "currency": "USD",
+      "scraped_at": "2026-04-22T19:44:45.544592+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 1.0,
+          "intro_price_raw": "1",
+          "intro_price_cny": 6.83,
+          "regular_price": 9.99,
+          "regular_price_raw": "9.99",
+          "regular_price_cny": 68.21,
+          "auto_renew_price": 7.99,
+          "auto_renew_price_raw": "7.99",
+          "auto_renew_price_cny": 54.56
+        }
+      ]
+    },
+    {
+      "region_code": "et-EE",
+      "name_en": "Estonia",
+      "name_cn": "爱沙尼亚",
+      "currency": "EUR",
+      "scraped_at": "2026-04-22T19:44:50.101057+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 1.0,
+          "intro_price_raw": "1,00",
+          "intro_price_cny": 7.99,
+          "regular_price": 11.99,
+          "regular_price_raw": "11,99",
+          "regular_price_cny": 95.86
+        }
+      ]
+    },
+    {
+      "region_code": "fr-LU",
+      "name_en": "Luxembourg (FR)",
+      "name_cn": "卢森堡(法语)",
+      "currency": "EUR",
+      "scraped_at": "2026-04-22T19:44:56.335745+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 1.0,
+          "intro_price_raw": "1",
+          "intro_price_cny": 7.99,
+          "regular_price": 14.99,
+          "regular_price_raw": "14,99",
+          "regular_price_cny": 119.84,
+          "auto_renew_price": 11.99,
+          "auto_renew_price_raw": "11,99",
+          "auto_renew_price_cny": 95.86
+        }
+      ]
+    },
+    {
+      "region_code": "hr-HR",
+      "name_en": "Croatia",
+      "name_cn": "克罗地亚",
+      "currency": "EUR",
+      "scraped_at": "2026-04-22T19:45:03.447955+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 1.0,
+          "intro_price_raw": "1,00",
+          "intro_price_cny": 7.99,
+          "regular_price": 11.99,
+          "regular_price_raw": "11,99",
+          "regular_price_cny": 95.86
+        }
+      ]
+    },
+    {
+      "region_code": "id-ID",
+      "name_en": "Indonesia",
+      "name_cn": "印度尼西亚",
+      "currency": "IDR",
+      "scraped_at": "2026-04-22T19:45:08.187638+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 14999.0,
+          "intro_price_raw": "14.999",
+          "intro_price_cny": 5.94,
+          "regular_price": 82999.0,
+          "regular_price_raw": "82.999",
+          "regular_price_cny": 32.9,
+          "auto_renew_price": 82999.0,
+          "auto_renew_price_raw": "82.999",
+          "auto_renew_price_cny": 32.9
+        }
+      ]
+    },
+    {
+      "region_code": "is-IS",
+      "name_en": "Iceland",
+      "name_cn": "冰岛",
+      "currency": "ISK",
+      "scraped_at": "2026-04-22T19:45:12.937126+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 144.0,
+          "intro_price_raw": "144",
+          "intro_price_cny": 8.01,
+          "regular_price": 1350.0,
+          "regular_price_raw": "1,350",
+          "regular_price_cny": 75.06
+        }
+      ]
+    },
+    {
+      "region_code": "ka-GE",
+      "name_en": "Georgia",
+      "name_cn": "格鲁吉亚",
+      "currency": "USD",
+      "scraped_at": "2026-04-22T19:45:16.877909+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 1.0,
+          "intro_price_raw": "1.00",
+          "intro_price_cny": 6.83,
+          "regular_price": 8.99,
+          "regular_price_raw": "8.99",
+          "regular_price_cny": 61.38
+        }
+      ]
+    },
+    {
+      "region_code": "lt-LT",
+      "name_en": "Lithuania",
+      "name_cn": "立陶宛",
+      "currency": "EUR",
+      "scraped_at": "2026-04-22T19:45:22.300286+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 1.0,
+          "intro_price_raw": "1,00",
+          "intro_price_cny": 7.99,
+          "regular_price": 11.99,
+          "regular_price_raw": "11,99",
+          "regular_price_cny": 95.86
+        }
+      ]
+    },
+    {
+      "region_code": "lv-LV",
+      "name_en": "Latvia",
+      "name_cn": "拉脱维亚",
+      "currency": "EUR",
+      "scraped_at": "2026-04-22T19:45:29.362190+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 1.0,
+          "intro_price_raw": "1,00",
+          "intro_price_cny": 7.99,
+          "regular_price": 11.99,
+          "regular_price_raw": "11,99",
+          "regular_price_cny": 95.86
+        }
+      ]
+    },
+    {
+      "region_code": "mk-MK",
+      "name_en": "North Macedonia",
+      "name_cn": "北马其顿",
+      "currency": "USD",
+      "scraped_at": "2026-04-22T19:45:34.817169+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 1.0,
+          "intro_price_raw": "1.00",
+          "intro_price_cny": 6.83,
+          "regular_price": 8.99,
+          "regular_price_raw": "8.99",
+          "regular_price_cny": 61.38
+        }
+      ]
+    },
+    {
+      "region_code": "mt-MT",
+      "name_en": "Malta",
+      "name_cn": "马耳他",
+      "currency": "EUR",
+      "scraped_at": "2026-04-22T19:45:40.938163+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 1.0,
+          "intro_price_raw": "1.00",
+          "intro_price_cny": 7.99,
+          "regular_price": 11.99,
+          "regular_price_raw": "11.99",
+          "regular_price_cny": 95.86
+        }
+      ]
+    },
+    {
+      "region_code": "ro-MD",
+      "name_en": "Moldova",
+      "name_cn": "摩尔多瓦",
+      "currency": "USD",
+      "scraped_at": "2026-04-22T19:45:47.057617+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 1.0,
+          "intro_price_raw": "1.00",
+          "intro_price_cny": 6.83,
+          "regular_price": 8.99,
+          "regular_price_raw": "8.99",
+          "regular_price_cny": 61.38
+        }
+      ]
+    },
+    {
+      "region_code": "ro-RO",
+      "name_en": "Romania",
+      "name_cn": "罗马尼亚",
+      "currency": "RON",
+      "scraped_at": "2026-04-22T19:45:52.916919+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 4.75,
+          "intro_price_raw": "4,75",
+          "intro_price_cny": 7.46,
+          "regular_price": 40.0,
+          "regular_price_raw": "40,00",
+          "regular_price_cny": 62.83
+        }
+      ]
+    },
+    {
+      "region_code": "sl-SL",
+      "name_en": "Slovenia",
+      "name_cn": "斯洛文尼亚",
+      "currency": "EUR",
+      "scraped_at": "2026-04-22T19:45:58.320807+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "regular_price": 13.99,
+          "regular_price_raw": "13.99",
+          "regular_price_cny": 111.85
+        },
+        {
+          "plan": "Game Pass Core",
+          "intro_price": 1.0,
+          "intro_price_raw": "1",
+          "intro_price_cny": 7.99,
+          "regular_price": 9.99,
+          "regular_price_raw": "9.99",
+          "regular_price_cny": 79.87
+        },
+        {
+          "plan": "Game Pass Standard",
+          "intro_price": 1.0,
+          "intro_price_raw": "1",
+          "intro_price_cny": 7.99,
+          "regular_price": 14.99,
+          "regular_price_raw": "14.99",
+          "regular_price_cny": 119.84
+        },
+        {
+          "plan": "Game Pass Ultimate",
+          "regular_price": 22.99,
+          "regular_price_raw": "22.99",
+          "regular_price_cny": 183.8
+        }
+      ]
+    },
+    {
+      "region_code": "sq-AL",
+      "name_en": "Albania",
+      "name_cn": "阿尔巴尼亚",
+      "currency": "USD",
+      "scraped_at": "2026-04-22T19:46:04.732781+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 1.0,
+          "intro_price_raw": "1.00",
+          "intro_price_cny": 6.83,
+          "regular_price": 7.99,
+          "regular_price_raw": "7.99",
+          "regular_price_cny": 54.56
+        }
+      ]
+    },
+    {
+      "region_code": "th-TH",
+      "name_en": "Thailand",
+      "name_cn": "泰国",
+      "currency": "THB",
+      "scraped_at": "2026-04-22T19:46:08.952235+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 35.0,
+          "intro_price_raw": "35",
+          "intro_price_cny": 7.41,
+          "regular_price": 199.0,
+          "regular_price_raw": "199",
+          "regular_price_cny": 42.12,
+          "auto_renew_price": 129.0,
+          "auto_renew_price_raw": "129.00",
+          "auto_renew_price_cny": 27.3
+        }
+      ]
+    },
+    {
+      "region_code": "uk-UA",
+      "name_en": "Ukraine",
+      "name_cn": "乌克兰",
+      "currency": "UAH",
+      "scraped_at": "2026-04-22T19:46:13.085925+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 39.99,
+          "intro_price_raw": "39,99",
+          "intro_price_cny": 6.18,
+          "regular_price": 290.0,
+          "regular_price_raw": "290,00",
+          "regular_price_cny": 44.85,
+          "auto_renew_price": 230.0,
+          "auto_renew_price_raw": "230,00",
+          "auto_renew_price_cny": 35.57
+        }
+      ]
+    },
+    {
+      "region_code": "vi-VN",
+      "name_en": "Vietnam",
+      "name_cn": "越南",
+      "currency": "VND",
+      "scraped_at": "2026-04-22T19:46:18.083162+00:00",
+      "plans": [
+        {
+          "plan": "PC Game Pass",
+          "intro_price": 24900.0,
+          "intro_price_raw": "24.900",
+          "intro_price_cny": 6.46,
+          "regular_price": 129000.0,
+          "regular_price_raw": "129.000",
+          "regular_price_cny": 33.46,
+          "auto_renew_price": 79000.0,
+          "auto_renew_price_raw": "79.000,00",
+          "auto_renew_price_cny": 20.49
+        }
+      ]
+    }
+  ]
+}
