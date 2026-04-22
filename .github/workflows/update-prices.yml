@@ -1,0 +1,47 @@
+name: Update Xbox Game Pass Prices
+
+on:
+  schedule:
+    # Run every day at 9:00 AM UTC
+    - cron: '0 9 * * *'
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  scrape-and-update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          playwright install chromium
+          playwright install-deps chromium
+
+      - name: Run scraper
+        run: python xbox_scraper.py
+
+      - name: Convert to CNY
+        run: python xbox_rate_converter.py
+
+      - name: Archive old data
+        run: |
+          mkdir -p archive
+          timestamp=$(date +%Y%m%d_%H%M%S)
+          if [ -f xbox_gamepass_prices.json ]; then
+            cp xbox_gamepass_prices.json archive/xbox_gamepass_prices_${timestamp}.json
+          fi
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add xbox_gamepass_prices.json xbox_gamepass_prices_processed.json xbox_gamepass_ranking.json archive/
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update Xbox Game Pass prices - $(date -u +%Y-%m-%d)" && git push)
