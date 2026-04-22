@@ -1,0 +1,341 @@
+{
+  "changes": [
+    {
+      "region": "ar-AE",
+      "plan": "PC Game Pass",
+      "type": "new",
+      "new_price_cny": 18.57
+    },
+    {
+      "region": "ar-AE",
+      "plan": "Game Pass Core",
+      "type": "new",
+      "new_price_cny": 14.85
+    },
+    {
+      "region": "ar-AE",
+      "plan": "Game Pass Standard",
+      "type": "new",
+      "new_price_cny": 20.43
+    },
+    {
+      "region": "ar-AE",
+      "plan": "Game Pass Ultimate",
+      "type": "new",
+      "new_price_cny": 29.72
+    },
+    {
+      "region": "ar-SA",
+      "plan": "PC Game Pass",
+      "type": "new",
+      "new_price_cny": 76.44
+    },
+    {
+      "region": "ar-SA",
+      "plan": "Game Pass Core",
+      "type": "new",
+      "new_price_cny": 54.6
+    },
+    {
+      "region": "ar-SA",
+      "plan": "Game Pass Standard",
+      "type": "new",
+      "new_price_cny": 72.8
+    },
+    {
+      "region": "ar-SA",
+      "plan": "Game Pass Ultimate",
+      "type": "new",
+      "new_price_cny": 111.03
+    },
+    {
+      "region": "he-IL",
+      "plan": "PC Game Pass",
+      "type": "new",
+      "new_price_cny": 109.25
+    },
+    {
+      "region": "he-IL",
+      "plan": "Game Pass Core",
+      "type": "new",
+      "new_price_cny": 91.04
+    },
+    {
+      "region": "he-IL",
+      "plan": "Game Pass Standard",
+      "type": "new",
+      "new_price_cny": 113.8
+    },
+    {
+      "region": "he-IL",
+      "plan": "Game Pass Ultimate",
+      "type": "new",
+      "new_price_cny": 141.12
+    },
+    {
+      "region": "de-AT",
+      "plan": "PC Game Pass",
+      "type": "new",
+      "new_price_cny": 71.85
+    },
+    {
+      "region": "de-CH",
+      "plan": "PC Game Pass",
+      "type": "new",
+      "new_price_cny": 86.92
+    },
+    {
+      "region": "de-DE",
+      "plan": "PC Game Pass",
+      "type": "new",
+      "new_price_cny": 71.85
+    },
+    {
+      "region": "en-GB",
+      "plan": "PC Game Pass",
+      "type": "new",
+      "new_price_cny": 101.33
+    },
+    {
+      "region": "en-GB",
+      "plan": "Game Pass Core",
+      "type": "new",
+      "new_price_cny": 64.45
+    },
+    {
+      "region": "en-GB",
+      "plan": "Game Pass Standard",
+      "type": "new",
+      "new_price_cny": 101.33
+    },
+    {
+      "region": "en-GB",
+      "plan": "Game Pass Ultimate",
+      "type": "new",
+      "new_price_cny": 156.65
+    },
+    {
+      "region": "en-IE",
+      "plan": "PC Game Pass",
+      "type": "new",
+      "new_price_cny": 103.82
+    },
+    {
+      "region": "en-IE",
+      "plan": "Game Pass Core",
+      "type": "new",
+      "new_price_cny": 71.85
+    },
+    {
+      "region": "en-IE",
+      "plan": "Game Pass Standard",
+      "type": "new",
+      "new_price_cny": 103.82
+    },
+    {
+      "region": "en-IE",
+      "plan": "Game Pass Ultimate",
+      "type": "new",
+      "new_price_cny": 167.77
+    },
+    {
+      "region": "fr-BE",
+      "plan": "PC Game Pass",
+      "type": "new",
+      "new_price_cny": 71.85
+    },
+    {
+      "region": "fr-CH",
+      "plan": "PC Game Pass",
+      "type": "new",
+      "new_price_cny": 86.92
+    },
+    {
+      "region": "fr-FR",
+      "plan": "PC Game Pass",
+      "type": "new",
+      "new_price_cny": 71.85
+    },
+    {
+      "region": "en-AU",
+      "plan": "PC Game Pass",
+      "type": "new",
+      "new_price_cny": 82.85
+    },
+    {
+      "region": "en-AU",
+      "plan": "Game Pass Core",
+      "type": "new",
+      "new_price_cny": 63.3
+    },
+    {
+      "region": "en-AU",
+      "plan": "Game Pass Standard",
+      "type": "new",
+      "new_price_cny": 87.74
+    },
+    {
+      "region": "en-AU",
+      "plan": "Game Pass Ultimate",
+      "type": "new",
+      "new_price_cny": 126.85
+    },
+    {
+      "region": "en-HK",
+      "plan": "PC Game Pass",
+      "type": "new",
+      "new_price_cny": 87.16
+    },
+    {
+      "region": "en-HK",
+      "plan": "Game Pass Core",
+      "type": "new",
+      "new_price_cny": 52.3
+    },
+    {
+      "region": "en-HK",
+      "plan": "Game Pass Standard",
+      "type": "new",
+      "new_price_cny": 78.45
+    },
+    {
+      "region": "en-HK",
+      "plan": "Game Pass Ultimate",
+      "type": "new",
+      "new_price_cny": 104.6
+    },
+    {
+      "region": "en-IN",
+      "plan": "PC Game Pass",
+      "type": "new",
+      "new_price_cny": 63.96
+    },
+    {
+      "region": "en-IN",
+      "plan": "Game Pass Core",
+      "type": "new",
+      "new_price_cny": 36.31
+    },
+    {
+      "region": "en-IN",
+      "plan": "Game Pass Standard",
+      "type": "new",
+      "new_price_cny": 50.86
+    },
+    {
+      "region": "en-IN",
+      "plan": "Game Pass Ultimate",
+      "type": "new",
+      "new_price_cny": 79.24
+    },
+    {
+      "region": "en-NZ",
+      "plan": "PC Game Pass",
+      "type": "new",
+      "new_price_cny": 84.46
+    },
+    {
+      "region": "en-NZ",
+      "plan": "Game Pass Core",
+      "type": "new",
+      "new_price_cny": 64.31
+    },
+    {
+      "region": "en-NZ",
+      "plan": "Game Pass Standard",
+      "type": "new",
+      "new_price_cny": 88.5
+    },
+    {
+      "region": "en-NZ",
+      "plan": "Game Pass Ultimate",
+      "type": "new",
+      "new_price_cny": 132.84
+    },
+    {
+      "region": "en-SG",
+      "plan": "PC Game Pass",
+      "type": "new",
+      "new_price_cny": 74.38
+    },
+    {
+      "region": "en-SG",
+      "plan": "Game Pass Core",
+      "type": "new",
+      "new_price_cny": 58.81
+    },
+    {
+      "region": "en-SG",
+      "plan": "Game Pass Standard",
+      "type": "new",
+      "new_price_cny": 80.21
+    },
+    {
+      "region": "en-SG",
+      "plan": "Game Pass Ultimate",
+      "type": "new",
+      "new_price_cny": 117.19
+    },
+    {
+      "region": "en-ZA",
+      "plan": "PC Game Pass",
+      "type": "new",
+      "new_price_cny": 86.56
+    },
+    {
+      "region": "en-ZA",
+      "plan": "Game Pass Core",
+      "type": "new",
+      "new_price_cny": 57.57
+    },
+    {
+      "region": "en-ZA",
+      "plan": "Game Pass Standard",
+      "type": "new",
+      "new_price_cny": 82.42
+    },
+    {
+      "region": "en-ZA",
+      "plan": "Game Pass Ultimate",
+      "type": "new",
+      "new_price_cny": 98.99
+    },
+    {
+      "region": "en-CA",
+      "plan": "PC Game Pass",
+      "type": "new",
+      "new_price_cny": 84.85
+    },
+    {
+      "region": "en-CA",
+      "plan": "Game Pass Core",
+      "type": "new",
+      "new_price_cny": 69.87
+    },
+    {
+      "region": "en-CA",
+      "plan": "Game Pass Standard",
+      "type": "new",
+      "new_price_cny": 89.84
+    },
+    {
+      "region": "en-CA",
+      "plan": "Game Pass Ultimate",
+      "type": "new",
+      "new_price_cny": 129.79
+    },
+    {
+      "region": "fr-CA",
+      "plan": "PC Game Pass",
+      "type": "new",
+      "new_price_cny": 69.87
+    }
+  ],
+  "summary": {
+    "total_changes": 55,
+    "price_increases": 0,
+    "price_decreases": 0,
+    "new_regions": 55,
+    "detected_at": "2026-04-22T20:04:51.663230Z"
+  }
+}
