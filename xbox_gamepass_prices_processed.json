@@ -78,18 +78,18 @@
       },
       {
         "rank": 9,
-        "region_code": "bg-BG",
-        "name_en": "Bulgaria",
-        "name_cn": "保加利亚",
-        "currency": "BGN",
-        "auto_renew_price": 11.99,
-        "auto_renew_price_cny": 49.02
-      },
-      {
-        "rank": 10,
         "region_code": "sq-AL",
         "name_en": "Albania",
         "name_cn": "阿尔巴尼亚",
+        "currency": "USD",
+        "auto_renew_price": 7.99,
+        "auto_renew_price_cny": 54.61
+      },
+      {
+        "rank": 10,
+        "region_code": "es-BO",
+        "name_en": "Bolivia",
+        "name_cn": "玻利维亚",
         "currency": "USD",
         "auto_renew_price": 7.99,
         "auto_renew_price_cny": 54.61
@@ -198,7 +198,7 @@
       "name_en": "UAE",
       "name_cn": "阿联酋",
       "currency": "USD",
-      "scraped_at": "2026-04-23T08:55:35.332412+00:00",
+      "scraped_at": "2026-04-23T09:21:57.552907+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -237,7 +237,7 @@
       "name_en": "Bahrain",
       "name_cn": "巴林",
       "currency": "BHD",
-      "scraped_at": "2026-04-23T08:55:43.088763+00:00",
+      "scraped_at": "2026-04-23T09:22:06.007548+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -255,7 +255,7 @@
       "name_en": "Algeria",
       "name_cn": "阿尔及利亚",
       "currency": "DZD",
-      "scraped_at": "2026-04-23T08:55:49.626464+00:00",
+      "scraped_at": "2026-04-23T09:22:14.123127+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -273,7 +273,7 @@
       "name_en": "Egypt",
       "name_cn": "埃及",
       "currency": "EGP",
-      "scraped_at": "2026-04-23T08:55:57.192757+00:00",
+      "scraped_at": "2026-04-23T09:22:21.669362+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -291,7 +291,7 @@
       "name_en": "Kuwait",
       "name_cn": "科威特",
       "currency": "KWD",
-      "scraped_at": "2026-04-23T08:56:03.299298+00:00",
+      "scraped_at": "2026-04-23T09:22:28.483174+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -309,7 +309,7 @@
       "name_en": "Libya",
       "name_cn": "利比亚",
       "currency": "USD",
-      "scraped_at": "2026-04-23T08:56:10.930969+00:00",
+      "scraped_at": "2026-04-23T09:22:35.197743+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -327,7 +327,7 @@
       "name_en": "Morocco",
       "name_cn": "摩洛哥",
       "currency": "MAD",
-      "scraped_at": "2026-04-23T08:56:17.723041+00:00",
+      "scraped_at": "2026-04-23T09:22:42.420080+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -345,7 +345,7 @@
       "name_en": "Oman",
       "name_cn": "阿曼",
       "currency": "OMR",
-      "scraped_at": "2026-04-23T08:56:24.361942+00:00",
+      "scraped_at": "2026-04-23T09:22:49.168894+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -363,7 +363,7 @@
       "name_en": "Qatar",
       "name_cn": "卡塔尔",
       "currency": "QAR",
-      "scraped_at": "2026-04-23T08:56:31.285879+00:00",
+      "scraped_at": "2026-04-23T09:22:55.653851+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -381,7 +381,7 @@
       "name_en": "Saudi Arabia",
       "name_cn": "沙特阿拉伯",
       "currency": "SAR",
-      "scraped_at": "2026-04-23T08:56:35.318206+00:00",
+      "scraped_at": "2026-04-23T09:22:59.622559+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -420,7 +420,7 @@
       "name_en": "Tunisia",
       "name_cn": "突尼斯",
       "currency": "TND",
-      "scraped_at": "2026-04-23T08:56:41.635392+00:00",
+      "scraped_at": "2026-04-23T09:23:06.664372+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -438,7 +438,7 @@
       "name_en": "Israel",
       "name_cn": "以色列",
       "currency": "ILS",
-      "scraped_at": "2026-04-23T08:56:46.008535+00:00",
+      "scraped_at": "2026-04-23T09:23:10.714052+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -476,17 +476,17 @@
       "region_code": "bg-BG",
       "name_en": "Bulgaria",
       "name_cn": "保加利亚",
-      "currency": "BGN",
-      "scraped_at": "2026-04-23T08:56:52.750347+00:00",
+      "currency": "EUR",
+      "scraped_at": "2026-04-23T09:23:17.698348+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
           "intro_price": 1.0,
           "intro_price_raw": "1,00",
-          "intro_price_cny": 4.09,
+          "intro_price_cny": 8.0,
           "regular_price": 11.99,
           "regular_price_raw": "11,99",
-          "regular_price_cny": 49.02
+          "regular_price_cny": 95.89
         }
       ]
     },
@@ -495,7 +495,7 @@
       "name_en": "Czech Republic",
       "name_cn": "捷克",
       "currency": "CZK",
-      "scraped_at": "2026-04-23T08:56:57.082807+00:00",
+      "scraped_at": "2026-04-23T09:23:21.560640+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -534,7 +534,7 @@
       "name_en": "Denmark",
       "name_cn": "丹麦",
       "currency": "DKK",
-      "scraped_at": "2026-04-23T08:57:00.974321+00:00",
+      "scraped_at": "2026-04-23T09:23:25.308730+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -573,7 +573,7 @@
       "name_en": "Austria",
       "name_cn": "奥地利",
       "currency": "EUR",
-      "scraped_at": "2026-04-23T08:57:04.952161+00:00",
+      "scraped_at": "2026-04-23T09:23:29.223124+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -612,7 +612,7 @@
       "name_en": "Switzerland (DE)",
       "name_cn": "瑞士(德语)",
       "currency": "CHF",
-      "scraped_at": "2026-04-23T08:57:09.908500+00:00",
+      "scraped_at": "2026-04-23T09:23:33.135056+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -651,7 +651,7 @@
       "name_en": "Germany",
       "name_cn": "德国",
       "currency": "EUR",
-      "scraped_at": "2026-04-23T08:57:13.697929+00:00",
+      "scraped_at": "2026-04-23T09:23:38.700652+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -690,7 +690,7 @@
       "name_en": "Liechtenstein",
       "name_cn": "列支敦士登",
       "currency": "CHF",
-      "scraped_at": "2026-04-23T08:57:20.805235+00:00",
+      "scraped_at": "2026-04-23T09:23:45.211381+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -708,7 +708,7 @@
       "name_en": "Luxembourg (DE)",
       "name_cn": "卢森堡(德语)",
       "currency": "EUR",
-      "scraped_at": "2026-04-23T08:57:27.311801+00:00",
+      "scraped_at": "2026-04-23T09:23:51.449238+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -726,7 +726,7 @@
       "name_en": "Greece",
       "name_cn": "希腊",
       "currency": "EUR",
-      "scraped_at": "2026-04-23T08:57:32.111994+00:00",
+      "scraped_at": "2026-04-23T09:23:57.483434+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -765,7 +765,7 @@
       "name_en": "Cyprus",
       "name_cn": "塞浦路斯",
       "currency": "EUR",
-      "scraped_at": "2026-04-23T08:57:37.908201+00:00",
+      "scraped_at": "2026-04-23T09:24:03.914838+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -783,7 +783,7 @@
       "name_en": "United Kingdom",
       "name_cn": "英国",
       "currency": "GBP",
-      "scraped_at": "2026-04-23T08:57:41.820850+00:00",
+      "scraped_at": "2026-04-23T09:24:10.054185+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -822,7 +822,7 @@
       "name_en": "Ireland",
       "name_cn": "爱尔兰",
       "currency": "EUR",
-      "scraped_at": "2026-04-23T08:57:45.246776+00:00",
+      "scraped_at": "2026-04-23T09:24:16.268336+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -858,7 +858,7 @@
       "name_en": "Spain",
       "name_cn": "西班牙",
       "currency": "EUR",
-      "scraped_at": "2026-04-23T08:57:49.004626+00:00",
+      "scraped_at": "2026-04-23T09:24:21.971710+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -897,7 +897,7 @@
       "name_en": "Estonia",
       "name_cn": "爱沙尼亚",
       "currency": "EUR",
-      "scraped_at": "2026-04-23T08:57:55.398767+00:00",
+      "scraped_at": "2026-04-23T09:24:28.443768+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -915,7 +915,7 @@
       "name_en": "Finland",
       "name_cn": "芬兰",
       "currency": "EUR",
-      "scraped_at": "2026-04-23T08:58:01.642263+00:00",
+      "scraped_at": "2026-04-23T09:24:32.909651+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -954,7 +954,7 @@
       "name_en": "Belgium (FR)",
       "name_cn": "比利时(法语)",
       "currency": "EUR",
-      "scraped_at": "2026-04-23T08:58:05.215893+00:00",
+      "scraped_at": "2026-04-23T09:24:37.137674+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -993,7 +993,7 @@
       "name_en": "Switzerland (FR)",
       "name_cn": "瑞士(法语)",
       "currency": "CHF",
-      "scraped_at": "2026-04-23T08:58:12.305141+00:00",
+      "scraped_at": "2026-04-23T09:24:44.680502+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1011,7 +1011,7 @@
       "name_en": "France",
       "name_cn": "法国",
       "currency": "EUR",
-      "scraped_at": "2026-04-23T08:58:16.752519+00:00",
+      "scraped_at": "2026-04-23T09:24:49.771684+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1050,7 +1050,7 @@
       "name_en": "Luxembourg (FR)",
       "name_cn": "卢森堡(法语)",
       "currency": "EUR",
-      "scraped_at": "2026-04-23T08:58:23.352880+00:00",
+      "scraped_at": "2026-04-23T09:24:56.885599+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1065,7 +1065,7 @@
       "name_en": "Croatia",
       "name_cn": "克罗地亚",
       "currency": "EUR",
-      "scraped_at": "2026-04-23T08:58:31.016776+00:00",
+      "scraped_at": "2026-04-23T09:25:04.688556+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1083,7 +1083,7 @@
       "name_en": "Hungary",
       "name_cn": "匈牙利",
       "currency": "HUF",
-      "scraped_at": "2026-04-23T08:58:34.829984+00:00",
+      "scraped_at": "2026-04-23T09:25:09.251989+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1122,7 +1122,7 @@
       "name_en": "Iceland",
       "name_cn": "冰岛",
       "currency": "ISK",
-      "scraped_at": "2026-04-23T08:58:41.469228+00:00",
+      "scraped_at": "2026-04-23T09:25:16.089931+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1140,7 +1140,7 @@
       "name_en": "Italy",
       "name_cn": "意大利",
       "currency": "EUR",
-      "scraped_at": "2026-04-23T08:58:45.497142+00:00",
+      "scraped_at": "2026-04-23T09:25:22.583966+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1179,7 +1179,7 @@
       "name_en": "Lithuania",
       "name_cn": "立陶宛",
       "currency": "EUR",
-      "scraped_at": "2026-04-23T08:58:51.515237+00:00",
+      "scraped_at": "2026-04-23T09:25:29.620799+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1197,7 +1197,7 @@
       "name_en": "Latvia",
       "name_cn": "拉脱维亚",
       "currency": "EUR",
-      "scraped_at": "2026-04-23T08:58:57.775257+00:00",
+      "scraped_at": "2026-04-23T09:25:36.677044+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1215,7 +1215,7 @@
       "name_en": "North Macedonia",
       "name_cn": "北马其顿",
       "currency": "USD",
-      "scraped_at": "2026-04-23T08:59:05.371661+00:00",
+      "scraped_at": "2026-04-23T09:25:42.636080+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1233,7 +1233,7 @@
       "name_en": "Malta",
       "name_cn": "马耳他",
       "currency": "EUR",
-      "scraped_at": "2026-04-23T08:59:12.427023+00:00",
+      "scraped_at": "2026-04-23T09:25:49.748680+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1251,7 +1251,7 @@
       "name_en": "Norway",
       "name_cn": "挪威",
       "currency": "NOK",
-      "scraped_at": "2026-04-23T08:59:21.678035+00:00",
+      "scraped_at": "2026-04-23T09:25:53.427885+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1290,7 +1290,7 @@
       "name_en": "Belgium (NL)",
       "name_cn": "比利时(荷语)",
       "currency": "EUR",
-      "scraped_at": "2026-04-23T08:59:26.107857+00:00",
+      "scraped_at": "2026-04-23T09:25:58.671886+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1329,7 +1329,7 @@
       "name_en": "Netherlands",
       "name_cn": "荷兰",
       "currency": "EUR",
-      "scraped_at": "2026-04-23T08:59:29.970550+00:00",
+      "scraped_at": "2026-04-23T09:26:03.626189+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1368,7 +1368,7 @@
       "name_en": "Poland",
       "name_cn": "波兰",
       "currency": "PLN",
-      "scraped_at": "2026-04-23T08:59:34.527780+00:00",
+      "scraped_at": "2026-04-23T09:26:07.407902+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1401,7 +1401,7 @@
       "name_en": "Portugal",
       "name_cn": "葡萄牙",
       "currency": "EUR",
-      "scraped_at": "2026-04-23T08:59:40.285381+00:00",
+      "scraped_at": "2026-04-23T09:26:11.542611+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1434,7 +1434,7 @@
       "name_en": "Moldova",
       "name_cn": "摩尔多瓦",
       "currency": "USD",
-      "scraped_at": "2026-04-23T08:59:46.600849+00:00",
+      "scraped_at": "2026-04-23T09:26:18.757273+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1452,7 +1452,7 @@
       "name_en": "Romania",
       "name_cn": "罗马尼亚",
       "currency": "RON",
-      "scraped_at": "2026-04-23T08:59:56.666873+00:00",
+      "scraped_at": "2026-04-23T09:26:25.286282+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1470,7 +1470,7 @@
       "name_en": "Russia",
       "name_cn": "俄罗斯",
       "currency": "RUB",
-      "scraped_at": "2026-04-23T09:00:03.291507+00:00",
+      "scraped_at": "2026-04-23T09:26:35.128168+00:00",
       "plans": []
     },
     {
@@ -1478,7 +1478,7 @@
       "name_en": "Slovakia",
       "name_cn": "斯洛伐克",
       "currency": "EUR",
-      "scraped_at": "2026-04-23T09:00:08.493327+00:00",
+      "scraped_at": "2026-04-23T09:26:38.683615+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1517,7 +1517,7 @@
       "name_en": "Slovenia",
       "name_cn": "斯洛文尼亚",
       "currency": "EUR",
-      "scraped_at": "2026-04-23T09:00:16.536580+00:00",
+      "scraped_at": "2026-04-23T09:26:45.553308+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1535,7 +1535,7 @@
       "name_en": "Albania",
       "name_cn": "阿尔巴尼亚",
       "currency": "USD",
-      "scraped_at": "2026-04-23T09:00:23.226861+00:00",
+      "scraped_at": "2026-04-23T09:26:52.769065+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1553,7 +1553,7 @@
       "name_en": "Sweden",
       "name_cn": "瑞典",
       "currency": "SEK",
-      "scraped_at": "2026-04-23T09:00:29.586593+00:00",
+      "scraped_at": "2026-04-23T09:26:59.131511+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1592,7 +1592,7 @@
       "name_en": "Turkey",
       "name_cn": "土耳其",
       "currency": "TRY",
-      "scraped_at": "2026-04-23T09:00:34.265135+00:00",
+      "scraped_at": "2026-04-23T09:27:03.478022+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1625,7 +1625,7 @@
       "name_en": "Ukraine",
       "name_cn": "乌克兰",
       "currency": "UAH",
-      "scraped_at": "2026-04-23T09:00:42.020864+00:00",
+      "scraped_at": "2026-04-23T09:27:10.530098+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1646,7 +1646,7 @@
       "name_en": "Bosnia and Herzegovina",
       "name_cn": "波斯尼亚和黑塞哥维那",
       "currency": "USD",
-      "scraped_at": "2026-04-23T09:00:49.098329+00:00",
+      "scraped_at": "2026-04-23T09:27:17.952941+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1664,7 +1664,7 @@
       "name_en": "Montenegro",
       "name_cn": "黑山",
       "currency": "EUR",
-      "scraped_at": "2026-04-23T09:00:56.486749+00:00",
+      "scraped_at": "2026-04-23T09:27:25.466644+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1682,7 +1682,7 @@
       "name_en": "Serbia",
       "name_cn": "塞尔维亚",
       "currency": "RSD",
-      "scraped_at": "2026-04-23T09:01:04.071924+00:00",
+      "scraped_at": "2026-04-23T09:27:32.109623+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1700,7 +1700,7 @@
       "name_en": "Australia",
       "name_cn": "澳大利亚",
       "currency": "AUD",
-      "scraped_at": "2026-04-23T09:01:11.604406+00:00",
+      "scraped_at": "2026-04-23T09:27:38.390699+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1739,7 +1739,7 @@
       "name_en": "Hong Kong",
       "name_cn": "香港",
       "currency": "HKD",
-      "scraped_at": "2026-04-23T09:01:15.337418+00:00",
+      "scraped_at": "2026-04-23T09:27:43.235911+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1772,7 +1772,7 @@
       "name_en": "India",
       "name_cn": "印度",
       "currency": "INR",
-      "scraped_at": "2026-04-23T09:01:22.220046+00:00",
+      "scraped_at": "2026-04-23T09:27:47.357678+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1805,7 +1805,7 @@
       "name_en": "Malaysia",
       "name_cn": "马来西亚",
       "currency": "MYR",
-      "scraped_at": "2026-04-23T09:01:29.819653+00:00",
+      "scraped_at": "2026-04-23T09:27:55.890154+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1823,7 +1823,7 @@
       "name_en": "New Zealand",
       "name_cn": "新西兰",
       "currency": "NZD",
-      "scraped_at": "2026-04-23T09:01:37.077991+00:00",
+      "scraped_at": "2026-04-23T09:28:01.752561+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1859,7 +1859,7 @@
       "name_en": "Philippines",
       "name_cn": "菲律宾",
       "currency": "PHP",
-      "scraped_at": "2026-04-23T09:01:43.096894+00:00",
+      "scraped_at": "2026-04-23T09:28:08.596388+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1877,7 +1877,7 @@
       "name_en": "Singapore",
       "name_cn": "新加坡",
       "currency": "SGD",
-      "scraped_at": "2026-04-23T09:01:47.477170+00:00",
+      "scraped_at": "2026-04-23T09:28:12.774096+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1916,7 +1916,7 @@
       "name_en": "Indonesia",
       "name_cn": "印度尼西亚",
       "currency": "IDR",
-      "scraped_at": "2026-04-23T09:01:54.229048+00:00",
+      "scraped_at": "2026-04-23T09:28:22.351856+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1937,7 +1937,7 @@
       "name_en": "Japan",
       "name_cn": "日本",
       "currency": "JPY",
-      "scraped_at": "2026-04-23T09:01:59.135653+00:00",
+      "scraped_at": "2026-04-23T09:28:27.156202+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1976,7 +1976,7 @@
       "name_en": "Georgia",
       "name_cn": "格鲁吉亚",
       "currency": "USD",
-      "scraped_at": "2026-04-23T09:02:05.986677+00:00",
+      "scraped_at": "2026-04-23T09:28:34.601177+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -1994,7 +1994,7 @@
       "name_en": "South Korea",
       "name_cn": "韩国",
       "currency": "KRW",
-      "scraped_at": "2026-04-23T09:02:09.914188+00:00",
+      "scraped_at": "2026-04-23T09:28:41.363256+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -2027,7 +2027,7 @@
       "name_en": "Thailand",
       "name_cn": "泰国",
       "currency": "THB",
-      "scraped_at": "2026-04-23T09:02:16.386257+00:00",
+      "scraped_at": "2026-04-23T09:28:48.431804+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -2048,7 +2048,7 @@
       "name_en": "Vietnam",
       "name_cn": "越南",
       "currency": "VND",
-      "scraped_at": "2026-04-23T09:02:23.881570+00:00",
+      "scraped_at": "2026-04-23T09:28:56.255000+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -2069,7 +2069,7 @@
       "name_en": "Hong Kong (ZH)",
       "name_cn": "香港(中文)",
       "currency": "HKD",
-      "scraped_at": "2026-04-23T09:02:27.689658+00:00",
+      "scraped_at": "2026-04-23T09:29:00.070181+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -2102,7 +2102,7 @@
       "name_en": "Taiwan",
       "name_cn": "台湾",
       "currency": "TWD",
-      "scraped_at": "2026-04-23T09:02:32.141761+00:00",
+      "scraped_at": "2026-04-23T09:29:04.279222+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -2141,7 +2141,7 @@
       "name_en": "South Africa",
       "name_cn": "南非",
       "currency": "ZAR",
-      "scraped_at": "2026-04-23T09:02:36.644637+00:00",
+      "scraped_at": "2026-04-23T09:29:09.226888+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -2180,7 +2180,7 @@
       "name_en": "Canada (EN)",
       "name_cn": "加拿大(英语)",
       "currency": "CAD",
-      "scraped_at": "2026-04-23T09:02:40.335014+00:00",
+      "scraped_at": "2026-04-23T09:29:14.025650+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -2219,7 +2219,7 @@
       "name_en": "United States",
       "name_cn": "美国",
       "currency": "USD",
-      "scraped_at": "2026-04-23T09:02:46.086082+00:00",
+      "scraped_at": "2026-04-23T09:29:20.927404+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -2258,7 +2258,7 @@
       "name_en": "Argentina",
       "name_cn": "阿根廷",
       "currency": "ARS",
-      "scraped_at": "2026-04-23T09:02:50.091411+00:00",
+      "scraped_at": "2026-04-23T09:29:24.612468+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -2291,7 +2291,7 @@
       "name_en": "Bolivia",
       "name_cn": "玻利维亚",
       "currency": "USD",
-      "scraped_at": "2026-04-23T09:02:57.650772+00:00",
+      "scraped_at": "2026-04-23T09:29:31.347100+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -2309,7 +2309,7 @@
       "name_en": "Chile",
       "name_cn": "智利",
       "currency": "CLP",
-      "scraped_at": "2026-04-23T09:03:01.663400+00:00",
+      "scraped_at": "2026-04-23T09:29:34.967178+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -2342,7 +2342,7 @@
       "name_en": "Colombia",
       "name_cn": "哥伦比亚",
       "currency": "COP",
-      "scraped_at": "2026-04-23T09:03:06.272103+00:00",
+      "scraped_at": "2026-04-23T09:29:38.980451+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -2375,7 +2375,7 @@
       "name_en": "Costa Rica",
       "name_cn": "哥斯达黎加",
       "currency": "CRC",
-      "scraped_at": "2026-04-23T09:03:13.641022+00:00",
+      "scraped_at": "2026-04-23T09:29:45.770430+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -2390,7 +2390,7 @@
       "name_en": "Ecuador",
       "name_cn": "厄瓜多尔",
       "currency": "USD",
-      "scraped_at": "2026-04-23T09:03:19.971270+00:00",
+      "scraped_at": "2026-04-23T09:29:54.048596+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -2408,7 +2408,7 @@
       "name_en": "Guatemala",
       "name_cn": "危地马拉",
       "currency": "GTQ",
-      "scraped_at": "2026-04-23T09:03:25.982903+00:00",
+      "scraped_at": "2026-04-23T09:30:01.692429+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -2426,7 +2426,7 @@
       "name_en": "Honduras",
       "name_cn": "洪都拉斯",
       "currency": "USD",
-      "scraped_at": "2026-04-23T09:03:32.863625+00:00",
+      "scraped_at": "2026-04-23T09:30:07.964240+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -2444,7 +2444,7 @@
       "name_en": "Mexico",
       "name_cn": "墨西哥",
       "currency": "MXN",
-      "scraped_at": "2026-04-23T09:03:39.767122+00:00",
+      "scraped_at": "2026-04-23T09:30:12.886476+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -2477,7 +2477,7 @@
       "name_en": "Nicaragua",
       "name_cn": "尼加拉瓜",
       "currency": "USD",
-      "scraped_at": "2026-04-23T09:03:46.300996+00:00",
+      "scraped_at": "2026-04-23T09:30:19.447443+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -2495,7 +2495,7 @@
       "name_en": "Panama",
       "name_cn": "巴拿马",
       "currency": "USD",
-      "scraped_at": "2026-04-23T09:03:56.096550+00:00",
+      "scraped_at": "2026-04-23T09:30:26.027711+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -2513,7 +2513,7 @@
       "name_en": "Peru",
       "name_cn": "秘鲁",
       "currency": "PEN",
-      "scraped_at": "2026-04-23T09:04:03.196743+00:00",
+      "scraped_at": "2026-04-23T09:30:32.816659+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -2528,7 +2528,7 @@
       "name_en": "Paraguay",
       "name_cn": "巴拉圭",
       "currency": "USD",
-      "scraped_at": "2026-04-23T09:04:10.130924+00:00",
+      "scraped_at": "2026-04-23T09:30:39.318736+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -2546,7 +2546,7 @@
       "name_en": "El Salvador",
       "name_cn": "萨尔瓦多",
       "currency": "USD",
-      "scraped_at": "2026-04-23T09:04:16.715082+00:00",
+      "scraped_at": "2026-04-23T09:30:46.941971+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -2564,7 +2564,7 @@
       "name_en": "Uruguay",
       "name_cn": "乌拉圭",
       "currency": "USD",
-      "scraped_at": "2026-04-23T09:04:23.992418+00:00",
+      "scraped_at": "2026-04-23T09:30:54.477971+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -2582,7 +2582,7 @@
       "name_en": "Canada (FR)",
       "name_cn": "加拿大(法语)",
       "currency": "CAD",
-      "scraped_at": "2026-04-23T09:04:32.338093+00:00",
+      "scraped_at": "2026-04-23T09:31:04.951994+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
@@ -2600,7 +2600,7 @@
       "name_en": "Brazil",
       "name_cn": "巴西",
       "currency": "BRL",
-      "scraped_at": "2026-04-23T09:04:38.053185+00:00",
+      "scraped_at": "2026-04-23T09:31:11.641671+00:00",
       "plans": [
         {
           "plan": "PC Game Pass",
