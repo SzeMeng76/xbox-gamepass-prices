@@ -209,11 +209,113 @@ def extract_plan_prices_from_blocks(html: str, currency: str) -> List[Dict[str, 
         block = m.group(1)
         plan = _empty_plan(plan_name)
 
-        # Try intro + regular: "for $1, then $9.99/month"
+        # Try intro + regular: "for $1, then $9.99/month" or Czech "za X, poté Y měsíčně"
         m2 = re.search(
             rf'for\s+(?![\d]+\s+days)[^\d]*({num})[^,<]*,\s*(?:<[^>]+>)*\s*then\s+[^\d]*({num})[^<]*(?:/|\\u002F)(?:month|mo)\b',
             block, re.IGNORECASE
         )
+        if not m2:
+            # Try German pattern (€ before number): "für €1, danach €8,99/Monat"
+            m2 = re.search(
+                rf'für\s+€[\s\xa0&nbsp;]*({num})[^,<]*,\s*danach\s+€[\s\xa0&nbsp;]*({num})[^<]*(?:/|\\u002F)Monat',
+                block, re.IGNORECASE
+            )
+        if not m2:
+            # Try Czech pattern
+            m2 = re.search(
+                rf'za\s+({num})[^,<]*,\s*poté\s+({num})[^<]*(?:měsíčně|Kč\s+měsíčně)',
+                block, re.IGNORECASE
+            )
+        if not m2:
+            # Try Danish pattern
+            m2 = re.search(
+                rf'for\s+({num})[^,<]*(?:og\s+)?derefter\s+({num})[^<]*(?:kr\.|pr\.måned)',
+                block, re.IGNORECASE
+            )
+        if not m2:
+            # Try Greek pattern: "με 1 €, στη συνέχεια 8,99 € /μήνα"
+            m2 = re.search(
+                rf'με\s+({num})[\s\xa0&nbsp;]*€[^,<]*,\s*στη συνέχεια\s+({num})[\s\xa0&nbsp;]*€[^<]*/μήνα',
+                block, re.IGNORECASE
+            )
+        if not m2:
+            # Try Spanish (Spain) pattern: "por 1 €, y luego 8,99 €/mes"
+            m2 = re.search(
+                rf'por\s+({num})[\s\xa0&nbsp;]*€[^,<]*,\s*y luego\s+({num})[\s\xa0&nbsp;]*€/mes',
+                block, re.IGNORECASE
+            )
+        if not m2:
+            # Try Finnish pattern: "1 €:lla, minkä jälkeen tilaus maksaa 8,99 €/kuukausi"
+            m2 = re.search(
+                rf'({num})[\s\xa0&nbsp;]*€[^,<]*,\s*minkä jälkeen tilaus maksaa\s+({num})[\s\xa0&nbsp;]*€/kuukausi',
+                block, re.IGNORECASE
+            )
+        if not m2:
+            # Try Hungarian pattern: "350 Ft, majd 3590 Ft/hónap"
+            m2 = re.search(
+                rf'({num})[\s\xa0&nbsp;]*Ft[^,<]*,\s*majd\s+({num})[\s\xa0&nbsp;]*Ft/hónap',
+                block, re.IGNORECASE
+            )
+        if not m2:
+            # Try Italian pattern: "a 1 €, e i successivi a 8,99 € al mese"
+            m2 = re.search(
+                rf'a\s+({num})[\s\xa0&nbsp;]*€[^,<]*,\s*(?:e\s+)?i successivi a\s+({num})[\s\xa0&nbsp;]*€\s+al mese',
+                block, re.IGNORECASE
+            )
+        if not m2:
+            # Try Norwegian pattern: "10 kr, deretter 105 kr/månedlig"
+            m2 = re.search(
+                rf'({num})[\s\xa0&nbsp;]*kr[^,<]*,\s*deretter\s+({num})[\s\xa0&nbsp;]*kr/månedlig',
+                block, re.IGNORECASE
+            )
+        if not m2:
+            # Try Dutch pattern: "€1, daarna €8,99/maand"
+            m2 = re.search(
+                rf'€[\s\xa0&nbsp;]*({num})[^,<]*,\s*daarna\s+€[\s\xa0&nbsp;]*({num})/maand',
+                block, re.IGNORECASE
+            )
+        if not m2:
+            # Try Polish pattern: might have intro pricing
+            m2 = re.search(
+                rf'({num})[\s\xa0&nbsp;]*zł[^,<]*,\s*(?:a\s+)?(?:potem|następnie)\s+({num})[\s\xa0&nbsp;]*zł/mies',
+                block, re.IGNORECASE
+            )
+        if not m2:
+            # Try Portuguese pattern: "1 €, e depois por 8,99 €/mês"
+            m2 = re.search(
+                rf'({num})[\s\xa0&nbsp;]*€[^,<]*,\s*e depois por\s+({num})[\s\xa0&nbsp;]*€/mês',
+                block, re.IGNORECASE
+            )
+        if not m2:
+            # Try Slovak pattern: "1 €, následne 8,99 €/mesiac"
+            m2 = re.search(
+                rf'({num})[\s\xa0&nbsp;]*€[^,<]*,\s*následne\s+({num})[\s\xa0&nbsp;]*€/mesiac',
+                block, re.IGNORECASE
+            )
+        if not m2:
+            # Try Swedish pattern: "10 kr, därefter 95 kr/månad"
+            m2 = re.search(
+                rf'({num})[\s\xa0&nbsp;]*kr[^,<]*,\s*därefter\s+({num})[\s\xa0&nbsp;]*kr/månad',
+                block, re.IGNORECASE
+            )
+        if not m2:
+            # Try Turkish pattern: might have intro pricing
+            m2 = re.search(
+                rf'({num})[\s\xa0&nbsp;]*₺[^,<]*,\s*(?:sonra|daha sonra)\s+({num})[\s\xa0&nbsp;]*₺',
+                block, re.IGNORECASE
+            )
+        if not m2:
+            # Try Japanese pattern: "￥150、以降は月額 ￥850 円"
+            m2 = re.search(
+                rf'￥[\s\xa0&nbsp;]*({num})[^、<]*、\s*以降は月額\s+￥[\s\xa0&nbsp;]*({num})',
+                block, re.IGNORECASE
+            )
+        if not m2:
+            # Try Chinese (Taiwan) pattern: "$30，之後每月 $259" or "$30，之後每個月 $349"
+            m2 = re.search(
+                rf'\$[\s\xa0&nbsp;]*({num})[^，<]*，\s*之後每(?:個)?月\s+\$[\s\xa0&nbsp;]*({num})',
+                block, re.IGNORECASE
+            )
         if m2:
             r1, r2 = m2.group(1), m2.group(2)
             p1, p2 = clean_price(r1, currency), clean_price(r2, currency)
@@ -223,9 +325,13 @@ def extract_plan_prices_from_blocks(html: str, currency: str) -> List[Dict[str, 
                 plan['intro_price'] = p1
                 plan['regular_price'] = p2
 
-        # Try standalone price: "$22.99/month" or "LOWER PRICE<br>$22.99/month"
+        # Try standalone price: various formats
         if not plan['regular_price']:
-            m3 = re.search(rf'[^\d]*({num})[^<\"]*(?:/|\\u002F)(?:month|mo)\b', block, re.IGNORECASE)
+            # Try currency-after-number format first
+            m3 = re.search(rf'[^\d]*({num})[\s\xa0&nbsp;]*(?:円|kr/månad|€/mesiac|€\s+al mese|€/mês|€\s*/μήνα|€/mes|€/kuukausi|€/maand|Ft/hónap|kr/månedlig|zł/mies|[^<\"]*(?:(?:/|\\u002F)(?:month|mo|月)|Kč\s+měsíčně|měsíčně|kr\.\s+pr\.måned|pr\.måned))\b', block, re.IGNORECASE)
+            if not m3:
+                # Try currency-before-number format: "€12,99/Monat" or "₺419" or "￥1,300" or "₩15,500" or "HK$60" or "$259"
+                m3 = re.search(rf'(?:€|₺|￥|₩|HK\$|\$)[\s\xa0&nbsp;]*({num})[^<\"]*(?:(?:/|\\u002F)(?:Monat|maand|월|月|月份)|ödeyin|円)?', block, re.IGNORECASE)
             if m3:
                 raw = m3.group(1)
                 price = clean_price(raw, currency)
@@ -262,20 +368,50 @@ def extract_prices_fallback(html: str, currency: str) -> Optional[Dict[str, Any]
     intro_patterns = [
         # English: "for PRICE, then PRICE/month" (exclude "for N days")
         rf'for\s+(?![\d]+\s+days)[^\d]*({num})[^,\"]*,\s*then\s+[^\d]*({num})[^\"<]*(?:/|\\u002F)(?:month|mo)[^t]',
+        # Czech
+        rf'za\s+({num})[^,<]*,\s*poté\s+({num})[^<]*(?:měsíčně|Kč\s+měsíčně)',
+        # Danish
+        rf'for\s+({num})[^,<]*(?:og\s+)?derefter\s+({num})[^<]*(?:kr\.|pr\.måned)',
+        # Greek
+        rf'με\s+({num})[\s\xa0&nbsp;]*€[^,\"]*,\s*στη συνέχεια\s+({num})[\s\xa0&nbsp;]*€[^\"]*/μήνα',
+        # Finnish
+        rf'({num})[\s\xa0&nbsp;]*€[^,\"]*,\s*minkä jälkeen tilaus maksaa\s+({num})[\s\xa0&nbsp;]*€/kuukausi',
+        # Hungarian
+        rf'({num})[\s\xa0&nbsp;]*Ft[^,\"]*,\s*majd\s+({num})[\s\xa0&nbsp;]*Ft/hónap',
+        # Italian
+        rf'a\s+({num})[\s\xa0&nbsp;]*€[^,\"]*,\s*(?:e\s+)?i successivi a\s+({num})[\s\xa0&nbsp;]*€\s+al mese',
+        # Norwegian
+        rf'({num})[\s\xa0&nbsp;]*kr[^,\"]*,\s*deretter\s+({num})[\s\xa0&nbsp;]*kr/månedlig',
+        # Dutch
+        rf'€[\s\xa0&nbsp;]*({num})[^,\"]*,\s*daarna\s+€[\s\xa0&nbsp;]*({num})/maand',
+        # Polish
+        rf'({num})[\s\xa0&nbsp;]*zł[^,\"]*,\s*(?:a\s+)?(?:potem|następnie)\s+({num})[\s\xa0&nbsp;]*zł/mies',
+        # Portuguese
+        rf'({num})[\s\xa0&nbsp;]*€[^,\"]*,\s*e depois por\s+({num})[\s\xa0&nbsp;]*€/mês',
+        # Slovak
+        rf'({num})[\s\xa0&nbsp;]*€[^,\"]*,\s*následne\s+({num})[\s\xa0&nbsp;]*€/mesiac',
+        # Swedish
+        rf'({num})[\s\xa0&nbsp;]*kr[^,\"]*,\s*därefter\s+({num})[\s\xa0&nbsp;]*kr/månad',
+        # Turkish
+        rf'({num})[\s\xa0&nbsp;]*₺[^,\"]*,\s*(?:sonra|daha sonra)\s+({num})[\s\xa0&nbsp;]*₺',
+        # Japanese
+        rf'￥[\s\xa0&nbsp;]*({num})[^、\"]*、\s*以降は月額\s+￥[\s\xa0&nbsp;]*({num})',
+        # Chinese (Taiwan)
+        rf'\$[\s\xa0&nbsp;]*({num})[^，\"]*，\s*之後每(?:個)?月\s+\$[\s\xa0&nbsp;]*({num})',
         # Vietnamese
         rf'v[oớ]i\s+({num})\s*[^\d,\"]*,\s*sau đó là\s+({num})\s*[^\d\"]*(?:/|\\u002F)tháng',
         # Ukrainian (uses \xa0 non-breaking spaces)
         rf'за[\s\xa0]+({num})[\s\xa0]*[^,\"]*,\s*далі за[\s\xa0]+ціною[\s\xa0]+({num})[\s\xa0]*[^\"]*(?:/|/міс)',
-        # Spanish
-        rf'por\s+[^\d]*({num})[^,\"]*,\s*(?:luego|después)\s+[^\d]*({num})\s*[^\"]*(?:al\s+mes|(?:/|\\u002F)mes)',
+        # Spanish (Latin America uses "luego/después", Spain uses "y luego")
+        rf'por\s+[^\d]*({num})[\s\xa0&nbsp;]*€?[^,\"]*,\s*(?:y\s+)?(?:luego|después)\s+[^\d]*({num})[\s\xa0&nbsp;]*€?\s*[^\"]*(?:al\s+mes|(?:/|\\u002F)mes)',
         # Indonesian
         rf'seharga\s+[^\d]*({num})[^,\"]*,\s*lalu\s+[^\d]*({num})\s*[^\"]*(?:/|\\u002F)bulan',
         # Romanian
         rf'pentru\s+[^\d]*({num})[^,\"]*,\s*apoi\s+[^\d]*({num})\s*[^\"]*(?:/|\\u002F)lun',
         # Thai
         rf'เพียง\s+[^\d]*({num})\s*[^\d,\"]*(?:จากนั้น|,)\s*[^\d]*({num})\s*[^\"]*(?:/|\\u002F)เดือน',
-        # German
-        rf'f[üu]r\s+[^\d]*({num})[^,\"]*,\s*danach\s+[^\d]*({num})\s*[^\"]*(?:/|\\u002F)Monat',
+        # German (€ before number)
+        rf'für\s+€[\s\xa0&nbsp;]*({num})[^,\"]*,\s*danach\s+€[\s\xa0&nbsp;]*({num})\s*[^\"]*(?:/|\\u002F)Monat',
         # French
         rf'pour\s+(?:seulement\s+)?[^\d]*({num})\s*[^,\"]*,\s*puis\s+[^\d]*({num})\s*[^\"]*(?:par\s+mois|(?:/|\\u002F)mois)',
     ]

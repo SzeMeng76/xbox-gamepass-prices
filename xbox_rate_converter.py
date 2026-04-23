@@ -216,12 +216,53 @@ def process():
         for i, r in enumerate(ranked[:10])
     ]
 
+    # Generate Ultimate ranking
+    rankable_ultimate = []
+    for region_code, region_data in all_regions.items():
+        plans = region_data.get('plans', [])
+        ultimate_plan = next((p for p in plans if p['plan'] == 'Game Pass Ultimate'), None)
+
+        if ultimate_plan:
+            price = ultimate_plan.get('auto_renew_price') or ultimate_plan.get('regular_price')
+            if price:
+                currency = region_data['currency']
+                price_cny = convert_to_cny(price, currency, rates)
+                if price_cny:
+                    rankable_ultimate.append({
+                        'region_code': region_code,
+                        'name_en': region_data['name_en'],
+                        'name_cn': region_data['name_cn'],
+                        'currency': currency,
+                        'auto_renew_price': price,
+                        'auto_renew_price_cny': price_cny,
+                    })
+
+    ranked_ultimate = sorted(rankable_ultimate, key=lambda x: x['auto_renew_price_cny'])
+
+    top10_ultimate = [
+        {
+            'rank': i + 1,
+            'region_code': r['region_code'],
+            'name_en': r['name_en'],
+            'name_cn': r['name_cn'],
+            'currency': r['currency'],
+            'auto_renew_price': r['auto_renew_price'],
+            'auto_renew_price_cny': r['auto_renew_price_cny'],
+        }
+        for i, r in enumerate(ranked_ultimate[:10])
+    ]
+
     output = {
         '_updated_at': updated_at,
         '_top10_cheapest_pc_game_pass': {
             'description': 'Top 10 cheapest regions for PC Game Pass (auto-renew monthly price, converted to CNY)',
             'updated_at': updated_at,
             'data': top10,
+        },
+        '_top10_cheapest_ultimate': {
+            'description': 'Top 10 cheapest regions for Game Pass Ultimate (auto-renew monthly price, converted to CNY)',
+            'updated_at': updated_at,
+            'data': top10_ultimate,
         },
         'regions': all_regions,
     }
@@ -232,6 +273,10 @@ def process():
     print(f'\nProcessed {len(all_regions)} regions -> xbox_gamepass_prices_processed.json')
     print(f'\nTop 10 cheapest PC Game Pass (auto-renew):')
     for item in top10:
+        print(f"  {item['rank']:2d}. {item['region_code']:8s} {item['auto_renew_price']:10.2f} {item['currency']:4s} = ¥{item['auto_renew_price_cny']:.2f}")
+
+    print(f'\nTop 10 cheapest Game Pass Ultimate (auto-renew):')
+    for item in top10_ultimate:
         print(f"  {item['rank']:2d}. {item['region_code']:8s} {item['auto_renew_price']:10.2f} {item['currency']:4s} = ¥{item['auto_renew_price_cny']:.2f}")
 
 
