@@ -218,18 +218,18 @@ def process():
 
     # Generate Ultimate ranking
     rankable_ultimate = []
-    for region_code, region_data in all_regions.items():
+    for region_data in all_regions:
         plans = region_data.get('plans', [])
-        ultimate_plan = next((p for p in plans if p['plan'] == 'Game Pass Ultimate'), None)
+        ultimate_plan = next((p for p in plans if p.get('plan') == 'Game Pass Ultimate'), None)
 
         if ultimate_plan:
             price = ultimate_plan.get('auto_renew_price') or ultimate_plan.get('regular_price')
             if price:
                 currency = region_data['currency']
-                price_cny = convert_to_cny(price, currency, rates)
+                price_cny = to_cny(price, currency, rates)
                 if price_cny:
                     rankable_ultimate.append({
-                        'region_code': region_code,
+                        'region_code': region_data['region_code'],
                         'name_en': region_data['name_en'],
                         'name_cn': region_data['name_cn'],
                         'currency': currency,
