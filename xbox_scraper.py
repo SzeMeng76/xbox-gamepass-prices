@@ -21,8 +21,8 @@ REGIONS = [
     'el-GR', 'en-CY', 'en-GB', 'en-IE', 'es-ES', 'et-EE', 'fi-FI',
     'fr-BE', 'fr-CH', 'fr-FR', 'fr-LU', 'hr-HR', 'hu-HU', 'is-IS', 'it-IT',
     'lt-LT', 'lv-LV', 'mk-MK', 'mt-MT', 'nb-NO', 'nl-BE', 'nl-NL', 'pl-PL',
-    'pt-PT', 'ro-MD', 'ro-RO', 'ru-RU', 'sk-SK', 'sl-SL', 'sq-AL', 'sv-SE',
-    'tr-TR', 'uk-UA',
+    'pt-PT', 'ro-MD', 'ro-RO', 'ru-RU', 'sk-SK', 'sl-SI', 'sq-AL', 'sv-SE',
+    'tr-TR', 'uk-UA', 'bs-Latn-BA', 'sr-Latn-ME', 'sr-Latn-RS',
     # Asia Pacific
     'en-AU', 'en-HK', 'en-IN', 'en-MY', 'en-NZ', 'en-PH', 'en-SG', 'id-ID',
     'ja-JP', 'ka-GE', 'ko-KR', 'th-TH', 'vi-VN', 'zh-HK', 'zh-TW',
@@ -85,11 +85,14 @@ REGION_INFO = {
     'ro-RO': {'currency': 'RON'},
     'ru-RU': {'currency': 'RUB'},
     'sk-SK': {'currency': 'EUR'},
-    'sl-SL': {'currency': 'EUR'},
+    'sl-SI': {'currency': 'EUR'},
     'sq-AL': {'currency': 'USD'},
     'sv-SE': {'currency': 'SEK'},
     'tr-TR': {'currency': 'TRY'},
     'uk-UA': {'currency': 'UAH'},
+    'bs-Latn-BA': {'currency': 'USD'},
+    'sr-Latn-ME': {'currency': 'EUR'},
+    'sr-Latn-RS': {'currency': 'RSD'},
     # Asia Pacific
     'en-AU': {'currency': 'AUD'},
     'en-HK': {'currency': 'HKD'},
@@ -221,6 +224,12 @@ def extract_plan_prices_from_blocks(html: str, currency: str) -> List[Dict[str, 
                 block, re.IGNORECASE
             )
         if not m2:
+            # Try German pattern (€ after number): "für 1 €, danach 8,99 €/Monat" or "für CHF 1, danach CHF 9.99/Monat"
+            m2 = re.search(
+                rf'für\s+(?:CHF[\s\xa0&nbsp;]*)?({num})[\s\xa0&nbsp;]*(?:€|CHF)?[^,<]*,\s*danach\s+(?:CHF[\s\xa0&nbsp;]*)?({num})[\s\xa0&nbsp;]*(?:€|CHF)?[^<]*(?:/|\\u002F)Monat',
+                block, re.IGNORECASE
+            )
+        if not m2:
             # Try Czech pattern
             m2 = re.search(
                 rf'za\s+({num})[^,<]*,\s*poté\s+({num})[^<]*(?:měsíčně|Kč\s+měsíčně)',
@@ -248,6 +257,12 @@ def extract_plan_prices_from_blocks(html: str, currency: str) -> List[Dict[str, 
             # Try Spanish (Latin America) pattern: "por USD$1.00, <br> luego USD$7.99 al mes" or "por Q7.99, luego Q65.99 al mes"
             m2 = re.search(
                 rf'por\s+(?:USD\$|Q)?({num})[^,]*,(?:[^a-z]|\s|<[^>]+>)*(?:luego|después)\s+(?:USD\$|Q)?({num})[^<\"]*al\s+mes',
+                block, re.IGNORECASE
+            )
+        if not m2:
+            # Try French pattern: "pour seulement 1 €, puis 8,99 € par mois"
+            m2 = re.search(
+                rf'pour\s+(?:seulement\s+)?[^\d]*({num})[\s\xa0&nbsp;]*€[^,<]*,\s*puis\s+[^\d]*({num})[\s\xa0&nbsp;]*€\s*(?:par\s+mois|/mois)',
                 block, re.IGNORECASE
             )
         if not m2:
@@ -334,14 +349,19 @@ def extract_plan_prices_from_blocks(html: str, currency: str) -> List[Dict[str, 
         # Try standalone price: various formats
         if not plan['regular_price']:
             # Try currency-after-number format first
-            m3 = re.search(rf'[^\d]*({num})[\s\xa0&nbsp;]*(?:円|kr/månad|€/mesiac|€\s+al mese|€/mês|€\s*/μήνα|€/mes|€/kuukausi|€/maand|Ft/hónap|kr/månedlig|zł/mies|[^<\"]*(?:(?:/|\\u002F)(?:month|mo|月)|Kč\s+měsíčně|měsíčně|kr\.\s+pr\.måned|pr\.måned))\b', block, re.IGNORECASE)
+            m3 = re.search(rf'[^\d]*({num})[\s\xa0&nbsp;]*(?:円|kr/månad|€/mesiac|€\s+al mese|€/mês|€\s*/μήνα|€/mes|€/Monat|€\s+par\s+mois|€/kuukausi|€/maand|Ft/hónap|kr/månedlig|zł/mies|[^<\"]*(?:(?:/|\\u002F)(?:month|mo|月)|Kč\s+měsíčně|měsíčně|kr\.\s+pr\.måned|pr\.måned))\b', block, re.IGNORECASE)
             if not m3:
-                # Try currency-before-number format: "€12,99/Monat" or "₺419" or "￥1,300" or "₩15,500" or "HK$60" or "$259"
-                m3 = re.search(rf'(?:€|₺|￥|₩|HK\$|\$)[\s\xa0&nbsp;]*({num})[^<\"]*(?:(?:/|\\u002F)(?:Monat|maand|월|月|月份)|ödeyin|円)?', block, re.IGNORECASE)
+                # Try currency-before-number format: "€12,99/Monat" or "CHF 13.99/Monat" or "₺419" or "￥1,300" or "₩15,500" or "HK$60" or "$259"
+                m3 = re.search(rf'(?:€|CHF|₺|￥|₩|HK\$|\$)[\s\xa0&nbsp;]*({num})[^<\"]*(?:(?:/|\\u002F)(?:Monat|maand|월|月|月份)|ödeyin|円)?', block, re.IGNORECASE)
             if m3:
                 raw = m3.group(1)
                 price = clean_price(raw, currency)
                 if price:
+                    # Check if this is a multi-month bundle (e.g., "3 meses por $22,490")
+                    multi_month = re.search(r'\b(\d+)\s*(?:meses|months|mois|Monate)\b', block, re.IGNORECASE)
+                    if multi_month:
+                        months = int(multi_month.group(1))
+                        price = price / months
                     plan['regular_price_raw'] = raw
                     plan['regular_price'] = price
 
@@ -462,11 +482,12 @@ def extract_prices_fallback(html: str, currency: str) -> Optional[Dict[str, Any]
 
 
 async def fetch_xbox_price(browser, region_code: str) -> Dict[str, Any]:
-    url = f"https://www.xbox.com/{region_code}/xbox-game-pass/pc-game-pass"
     currency = REGION_INFO.get(region_code, {}).get('currency', 'USD')
     page = await browser.new_page()
 
     try:
+        # Try /xbox-game-pass first (has all 4 plans for some regions)
+        url = f"https://www.xbox.com/{region_code}/xbox-game-pass"
         print(f"[{region_code}] Fetching...")
         await page.goto(url, wait_until='networkidle', timeout=30000)
         html = await page.content()
@@ -474,6 +495,14 @@ async def fetch_xbox_price(browser, region_code: str) -> Dict[str, Any]:
 
         # Try structured plan blocks first
         plans = extract_plan_prices_from_blocks(html, currency)
+
+        # If no plans found, try /pc-game-pass page
+        if not plans:
+            url = f"https://www.xbox.com/{region_code}/xbox-game-pass/pc-game-pass"
+            await page.goto(url, wait_until='networkidle', timeout=30000)
+            html = await page.content()
+            html = re.sub(r'\\u([0-9a-fA-F]{4})', lambda m: chr(int(m.group(1), 16)), html)
+            plans = extract_plan_prices_from_blocks(html, currency)
 
         # Fall back to legacy regex for regions without plan blocks
         if not plans:
