@@ -1,10 +1,35 @@
 {
-  "changes": [],
+  "changes": [
+    {
+      "region": "sl-SI",
+      "plan": "PC Game Pass",
+      "type": "new",
+      "new_price_cny": 95.89
+    },
+    {
+      "region": "bs-Latn-BA",
+      "plan": "PC Game Pass",
+      "type": "new",
+      "new_price_cny": 61.44
+    },
+    {
+      "region": "sr-Latn-ME",
+      "plan": "PC Game Pass",
+      "type": "new",
+      "new_price_cny": 95.89
+    },
+    {
+      "region": "sr-Latn-RS",
+      "plan": "PC Game Pass",
+      "type": "new",
+      "new_price_cny": 64.7
+    }
+  ],
   "summary": {
-    "total_changes": 0,
+    "total_changes": 4,
     "price_increases": 0,
     "price_decreases": 0,
-    "new_regions": 0,
-    "detected_at": "2026-04-23T05:08:08.584240Z"
+    "new_regions": 4,
+    "detected_at": "2026-04-23T09:04:41.552464Z"
   }
 }
