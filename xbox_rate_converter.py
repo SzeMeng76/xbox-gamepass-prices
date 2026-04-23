@@ -24,7 +24,7 @@ REGION_INFO = {
     'ar-TN': {'currency': 'TND', 'name_en': 'Tunisia',        'name_cn': '突尼斯'},
     'he-IL': {'currency': 'ILS', 'name_en': 'Israel',         'name_cn': '以色列'},
     # Europe
-    'bg-BG': {'currency': 'BGN', 'name_en': 'Bulgaria',       'name_cn': '保加利亚'},
+    'bg-BG': {'currency': 'EUR', 'name_en': 'Bulgaria',       'name_cn': '保加利亚'},
     'cs-CZ': {'currency': 'CZK', 'name_en': 'Czech Republic', 'name_cn': '捷克'},
     'da-DK': {'currency': 'DKK', 'name_en': 'Denmark',        'name_cn': '丹麦'},
     'de-AT': {'currency': 'EUR', 'name_en': 'Austria',        'name_cn': '奥地利'},

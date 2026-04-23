@@ -49,7 +49,7 @@ REGION_INFO = {
     'ar-TN': {'currency': 'TND'},
     'he-IL': {'currency': 'ILS'},
     # Europe
-    'bg-BG': {'currency': 'BGN'},
+    'bg-BG': {'currency': 'EUR'},
     'cs-CZ': {'currency': 'CZK'},
     'da-DK': {'currency': 'DKK'},
     'de-AT': {'currency': 'EUR'},
