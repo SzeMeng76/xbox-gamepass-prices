@@ -11,7 +11,7 @@ API_URL = f'https://openexchangerates.org/api/latest.json?app_id={API_KEY}&base=
 
 REGION_INFO = {
     # Middle East / North Africa
-    'ar-AE': {'currency': 'AED', 'name_en': 'UAE',            'name_cn': '阿联酋'},
+    'ar-AE': {'currency': 'USD', 'name_en': 'UAE',            'name_cn': '阿联酋'},
     'ar-BH': {'currency': 'BHD', 'name_en': 'Bahrain',        'name_cn': '巴林'},
     'ar-DZ': {'currency': 'DZD', 'name_en': 'Algeria',        'name_cn': '阿尔及利亚'},
     'ar-EG': {'currency': 'EGP', 'name_en': 'Egypt',          'name_cn': '埃及'},

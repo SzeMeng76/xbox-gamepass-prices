@@ -36,7 +36,7 @@ REGIONS = [
 
 REGION_INFO = {
     # Middle East / North Africa
-    'ar-AE': {'currency': 'AED'},
+    'ar-AE': {'currency': 'USD'},
     'ar-BH': {'currency': 'BHD'},
     'ar-DZ': {'currency': 'DZD'},
     'ar-EG': {'currency': 'EGP'},
@@ -245,6 +245,12 @@ def extract_plan_prices_from_blocks(html: str, currency: str) -> List[Dict[str, 
                 block, re.IGNORECASE
             )
         if not m2:
+            # Try Spanish (Latin America) pattern: "por USD$1.00, <br> luego USD$7.99 al mes" or "por Q7.99, luego Q65.99 al mes"
+            m2 = re.search(
+                rf'por\s+(?:USD\$|Q)?({num})[^,]*,(?:[^a-z]|\s|<[^>]+>)*(?:luego|después)\s+(?:USD\$|Q)?({num})[^<\"]*al\s+mes',
+                block, re.IGNORECASE
+            )
+        if not m2:
             # Try Finnish pattern: "1 €:lla, minkä jälkeen tilaus maksaa 8,99 €/kuukausi"
             m2 = re.search(
                 rf'({num})[\s\xa0&nbsp;]*€[^,<]*,\s*minkä jälkeen tilaus maksaa\s+({num})[\s\xa0&nbsp;]*€/kuukausi',
@@ -402,8 +408,8 @@ def extract_prices_fallback(html: str, currency: str) -> Optional[Dict[str, Any]
         rf'v[oớ]i\s+({num})\s*[^\d,\"]*,\s*sau đó là\s+({num})\s*[^\d\"]*(?:/|\\u002F)tháng',
         # Ukrainian (uses \xa0 non-breaking spaces)
         rf'за[\s\xa0]+({num})[\s\xa0]*[^,\"]*,\s*далі за[\s\xa0]+ціною[\s\xa0]+({num})[\s\xa0]*[^\"]*(?:/|/міс)',
-        # Spanish (Latin America uses "luego/después", Spain uses "y luego")
-        rf'por\s+[^\d]*({num})[\s\xa0&nbsp;]*€?[^,\"]*,\s*(?:y\s+)?(?:luego|después)\s+[^\d]*({num})[\s\xa0&nbsp;]*€?\s*[^\"]*(?:al\s+mes|(?:/|\\u002F)mes)',
+        # Spanish (Latin America) "por USD$1.00, luego USD$7.99 al mes" or "por Q7.99, luego Q65.99 al mes"
+        rf'por\s+(?:USD\$|Q)?({num})[^,]*,(?:[^a-z]|\s|<[^>]+>)*(?:luego|después)\s+(?:USD\$|Q)?({num})[^<\"]*al\s+mes',
         # Indonesian
         rf'seharga\s+[^\d]*({num})[^,\"]*,\s*lalu\s+[^\d]*({num})\s*[^\"]*(?:/|\\u002F)bulan',
         # Romanian
