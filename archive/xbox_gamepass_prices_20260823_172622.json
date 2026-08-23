@@ -3,7 +3,7 @@
     "region_code": "ar-AE",
     "currency": "USD",
     "url": "https://www.xbox.com/ar-AE/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:26:28.163454+00:00",
+    "scraped_at": "2026-08-16T09:26:00.366310+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -17,10 +17,10 @@
       {
         "plan": "Game Pass Core",
         "intro_price_raw": "1",
-        "regular_price_raw": "7.99",
+        "regular_price_raw": "10.99",
         "auto_renew_price_raw": null,
         "intro_price": 1.0,
-        "regular_price": 7.99,
+        "regular_price": 10.99,
         "auto_renew_price": null
       },
       {
@@ -47,7 +47,7 @@
     "region_code": "ar-BH",
     "currency": "BHD",
     "url": "https://www.xbox.com/ar-BH/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:26:37.249521+00:00",
+    "scraped_at": "2026-08-16T09:26:08.178652+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -64,7 +64,7 @@
     "region_code": "ar-DZ",
     "currency": "DZD",
     "url": "https://www.xbox.com/ar-DZ/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:26:44.301005+00:00",
+    "scraped_at": "2026-08-16T09:26:20.416174+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -81,7 +81,7 @@
     "region_code": "ar-EG",
     "currency": "EGP",
     "url": "https://www.xbox.com/ar-EG/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:26:51.526837+00:00",
+    "scraped_at": "2026-08-16T09:26:30.318686+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -98,7 +98,7 @@
     "region_code": "ar-KW",
     "currency": "KWD",
     "url": "https://www.xbox.com/ar-KW/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:26:59.373473+00:00",
+    "scraped_at": "2026-08-16T09:26:37.919334+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -115,7 +115,7 @@
     "region_code": "ar-LY",
     "currency": "USD",
     "url": "https://www.xbox.com/ar-LY/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:27:08.541646+00:00",
+    "scraped_at": "2026-08-16T09:26:49.124929+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -132,7 +132,7 @@
     "region_code": "ar-MA",
     "currency": "MAD",
     "url": "https://www.xbox.com/ar-MA/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:27:14.658838+00:00",
+    "scraped_at": "2026-08-16T09:26:58.658427+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -149,7 +149,7 @@
     "region_code": "ar-OM",
     "currency": "OMR",
     "url": "https://www.xbox.com/ar-OM/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:27:21.190372+00:00",
+    "scraped_at": "2026-08-16T09:27:04.198841+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -166,7 +166,7 @@
     "region_code": "ar-QA",
     "currency": "QAR",
     "url": "https://www.xbox.com/ar-QA/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:27:27.648630+00:00",
+    "scraped_at": "2026-08-16T09:27:11.775910+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -183,7 +183,7 @@
     "region_code": "ar-SA",
     "currency": "SAR",
     "url": "https://www.xbox.com/ar-SA/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:27:33.961399+00:00",
+    "scraped_at": "2026-08-16T09:27:17.889591+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -197,10 +197,10 @@
       {
         "plan": "Game Pass Core",
         "intro_price_raw": "3.90",
-        "regular_price_raw": "29.99",
+        "regular_price_raw": "39.99",
         "auto_renew_price_raw": null,
         "intro_price": 3.9,
-        "regular_price": 29.99,
+        "regular_price": 39.99,
         "auto_renew_price": null
       },
       {
@@ -227,7 +227,7 @@
     "region_code": "ar-TN",
     "currency": "TND",
     "url": "https://www.xbox.com/ar-TN/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:27:43.484578+00:00",
+    "scraped_at": "2026-08-16T09:27:26.482313+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -244,7 +244,7 @@
     "region_code": "he-IL",
     "currency": "ILS",
     "url": "https://www.xbox.com/he-IL/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:27:50.425258+00:00",
+    "scraped_at": "2026-08-16T09:27:32.471168+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -258,10 +258,10 @@
       {
         "plan": "Game Pass Core",
         "intro_price_raw": "3.80",
-        "regular_price_raw": "39.99",
+        "regular_price_raw": "49.99",
         "auto_renew_price_raw": null,
         "intro_price": 3.8,
-        "regular_price": 39.99,
+        "regular_price": 49.99,
         "auto_renew_price": null
       },
       {
@@ -288,7 +288,7 @@
     "region_code": "bg-BG",
     "currency": "EUR",
     "url": "https://www.xbox.com/bg-BG/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:27:56.397437+00:00",
+    "scraped_at": "2026-08-16T09:27:38.742991+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -305,7 +305,7 @@
     "region_code": "cs-CZ",
     "currency": "CZK",
     "url": "https://www.xbox.com/cs-CZ/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:28:00.424414+00:00",
+    "scraped_at": "2026-08-16T09:27:44.702567+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -319,10 +319,10 @@
       {
         "plan": "Game Pass Core",
         "intro_price_raw": "25,90",
-        "regular_price_raw": "239",
+        "regular_price_raw": "329",
         "auto_renew_price_raw": null,
         "intro_price": 25.9,
-        "regular_price": 239.0,
+        "regular_price": 329.0,
         "auto_renew_price": null
       },
       {
@@ -349,7 +349,7 @@
     "region_code": "da-DK",
     "currency": "DKK",
     "url": "https://www.xbox.com/da-DK/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:28:04.467896+00:00",
+    "scraped_at": "2026-08-16T09:27:50.639619+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -363,10 +363,10 @@
       {
         "plan": "Game Pass Core",
         "intro_price_raw": "10",
-        "regular_price_raw": "65",
+        "regular_price_raw": "99",
         "auto_renew_price_raw": null,
         "intro_price": 10.0,
-        "regular_price": 65.0,
+        "regular_price": 99.0,
         "auto_renew_price": null
       },
       {
@@ -393,7 +393,7 @@
     "region_code": "de-AT",
     "currency": "EUR",
     "url": "https://www.xbox.com/de-AT/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:28:10.407259+00:00",
+    "scraped_at": "2026-08-16T09:27:56.141407+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -407,10 +407,10 @@
       {
         "plan": "Game Pass Core",
         "intro_price_raw": "1",
-        "regular_price_raw": "8,99",
+        "regular_price_raw": "12,99",
         "auto_renew_price_raw": null,
         "intro_price": 1.0,
-        "regular_price": 8.99,
+        "regular_price": 12.99,
         "auto_renew_price": null
       },
       {
@@ -437,7 +437,7 @@
     "region_code": "de-CH",
     "currency": "CHF",
     "url": "https://www.xbox.com/de-CH/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:28:15.468480+00:00",
+    "scraped_at": "2026-08-16T09:28:01.668563+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -451,10 +451,10 @@
       {
         "plan": "Game Pass Core",
         "intro_price_raw": "1",
-        "regular_price_raw": "9.99",
+        "regular_price_raw": "14.99",
         "auto_renew_price_raw": null,
         "intro_price": 1.0,
-        "regular_price": 9.99,
+        "regular_price": 14.99,
         "auto_renew_price": null
       },
       {
@@ -481,7 +481,7 @@
     "region_code": "de-DE",
     "currency": "EUR",
     "url": "https://www.xbox.com/de-DE/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:28:21.217086+00:00",
+    "scraped_at": "2026-08-16T09:28:07.701117+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -495,10 +495,10 @@
       {
         "plan": "Game Pass Core",
         "intro_price_raw": "1",
-        "regular_price_raw": "8,99",
+        "regular_price_raw": "12,99",
         "auto_renew_price_raw": null,
         "intro_price": 1.0,
-        "regular_price": 8.99,
+        "regular_price": 12.99,
         "auto_renew_price": null
       },
       {
@@ -525,7 +525,7 @@
     "region_code": "de-LI",
     "currency": "CHF",
     "url": "https://www.xbox.com/de-LI/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:28:29.102863+00:00",
+    "scraped_at": "2026-08-16T09:28:15.119547+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -542,7 +542,7 @@
     "region_code": "de-LU",
     "currency": "EUR",
     "url": "https://www.xbox.com/de-LU/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:28:35.887414+00:00",
+    "scraped_at": "2026-08-16T09:28:21.849592+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -559,7 +559,7 @@
     "region_code": "el-GR",
     "currency": "EUR",
     "url": "https://www.xbox.com/el-GR/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:28:41.802023+00:00",
+    "scraped_at": "2026-08-16T09:28:27.482982+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -573,10 +573,10 @@
       {
         "plan": "Game Pass Core",
         "intro_price_raw": "1",
-        "regular_price_raw": "8,99",
+        "regular_price_raw": "12,99",
         "auto_renew_price_raw": null,
         "intro_price": 1.0,
-        "regular_price": 8.99,
+        "regular_price": 12.99,
         "auto_renew_price": null
       },
       {
@@ -603,7 +603,7 @@
     "region_code": "en-CY",
     "currency": "EUR",
     "url": "https://www.xbox.com/en-CY/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:28:50.119753+00:00",
+    "scraped_at": "2026-08-16T09:28:34.910769+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -620,7 +620,7 @@
     "region_code": "en-GB",
     "currency": "GBP",
     "url": "https://www.xbox.com/en-GB/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:28:55.552566+00:00",
+    "scraped_at": "2026-08-16T09:28:40.251787+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -634,10 +634,10 @@
       {
         "plan": "Game Pass Core",
         "intro_price_raw": "1",
-        "regular_price_raw": "6.99",
+        "regular_price_raw": "10.99",
         "auto_renew_price_raw": null,
         "intro_price": 1.0,
-        "regular_price": 6.99,
+        "regular_price": 10.99,
         "auto_renew_price": null
       },
       {
@@ -664,7 +664,7 @@
     "region_code": "en-IE",
     "currency": "EUR",
     "url": "https://www.xbox.com/en-IE/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:28:59.418859+00:00",
+    "scraped_at": "2026-08-16T09:28:46.432030+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -677,10 +677,10 @@
       },
       {
         "plan": "Game Pass Core",
-        "intro_price_raw": "1",
+        "intro_price_raw": null,
         "regular_price_raw": "8.99",
         "auto_renew_price_raw": null,
-        "intro_price": 1.0,
+        "intro_price": null,
         "regular_price": 8.99,
         "auto_renew_price": null
       },
@@ -708,7 +708,7 @@
     "region_code": "es-ES",
     "currency": "EUR",
     "url": "https://www.xbox.com/es-ES/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:29:05.342856+00:00",
+    "scraped_at": "2026-08-16T09:28:52.186769+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -722,10 +722,10 @@
       {
         "plan": "Game Pass Core",
         "intro_price_raw": "1",
-        "regular_price_raw": "8,99",
+        "regular_price_raw": "12,99",
         "auto_renew_price_raw": null,
         "intro_price": 1.0,
-        "regular_price": 8.99,
+        "regular_price": 12.99,
         "auto_renew_price": null
       },
       {
@@ -752,7 +752,7 @@
     "region_code": "et-EE",
     "currency": "EUR",
     "url": "https://www.xbox.com/et-EE/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:29:12.496155+00:00",
+    "scraped_at": "2026-08-16T09:28:58.338782+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -769,7 +769,7 @@
     "region_code": "fi-FI",
     "currency": "EUR",
     "url": "https://www.xbox.com/fi-FI/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:29:18.442067+00:00",
+    "scraped_at": "2026-08-16T09:29:04.217886+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -783,10 +783,10 @@
       {
         "plan": "Game Pass Core",
         "intro_price_raw": "1",
-        "regular_price_raw": "8,99",
+        "regular_price_raw": "12,99",
         "auto_renew_price_raw": null,
         "intro_price": 1.0,
-        "regular_price": 8.99,
+        "regular_price": 12.99,
         "auto_renew_price": null
       },
       {
@@ -813,7 +813,7 @@
     "region_code": "fr-BE",
     "currency": "EUR",
     "url": "https://www.xbox.com/fr-BE/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:29:24.012044+00:00",
+    "scraped_at": "2026-08-16T09:29:10.057597+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -827,10 +827,10 @@
       {
         "plan": "Game Pass Core",
         "intro_price_raw": "1",
-        "regular_price_raw": "8,99",
+        "regular_price_raw": "12,99",
         "auto_renew_price_raw": null,
         "intro_price": 1.0,
-        "regular_price": 8.99,
+        "regular_price": 12.99,
         "auto_renew_price": null
       },
       {
@@ -857,15 +857,15 @@
     "region_code": "fr-CH",
     "currency": "CHF",
     "url": "https://www.xbox.com/fr-CH/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:29:30.785204+00:00",
+    "scraped_at": "2026-08-16T09:29:19.291875+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
         "intro_price_raw": "1",
-        "regular_price_raw": "9.99",
+        "regular_price_raw": "14.99",
         "auto_renew_price_raw": null,
         "intro_price": 1.0,
-        "regular_price": 9.99,
+        "regular_price": 14.99,
         "auto_renew_price": null
       }
     ]
@@ -874,7 +874,7 @@
     "region_code": "fr-FR",
     "currency": "EUR",
     "url": "https://www.xbox.com/fr-FR/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:29:38.458433+00:00",
+    "scraped_at": "2026-08-16T09:29:24.708323+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -888,10 +888,10 @@
       {
         "plan": "Game Pass Core",
         "intro_price_raw": "1",
-        "regular_price_raw": "8,99",
+        "regular_price_raw": "12,99",
         "auto_renew_price_raw": null,
         "intro_price": 1.0,
-        "regular_price": 8.99,
+        "regular_price": 12.99,
         "auto_renew_price": null
       },
       {
@@ -918,7 +918,7 @@
     "region_code": "fr-LU",
     "currency": "EUR",
     "url": "https://www.xbox.com/fr-LU/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:29:45.996946+00:00",
+    "scraped_at": "2026-08-16T09:29:34.893926+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -935,7 +935,7 @@
     "region_code": "hr-HR",
     "currency": "EUR",
     "url": "https://www.xbox.com/hr-HR/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:29:52.840962+00:00",
+    "scraped_at": "2026-08-16T09:29:43.835830+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -952,7 +952,7 @@
     "region_code": "hu-HU",
     "currency": "HUF",
     "url": "https://www.xbox.com/hu-HU/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:29:59.126344+00:00",
+    "scraped_at": "2026-08-16T09:29:49.550139+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -966,10 +966,10 @@
       {
         "plan": "Game Pass Core",
         "intro_price_raw": "350",
-        "regular_price_raw": "3590",
+        "regular_price_raw": "4990",
         "auto_renew_price_raw": null,
         "intro_price": 350.0,
-        "regular_price": 3590.0,
+        "regular_price": 4990.0,
         "auto_renew_price": null
       },
       {
@@ -996,7 +996,7 @@
     "region_code": "is-IS",
     "currency": "ISK",
     "url": "https://www.xbox.com/is-IS/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:30:09.014403+00:00",
+    "scraped_at": "2026-08-16T09:29:58.288337+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -1013,7 +1013,7 @@
     "region_code": "it-IT",
     "currency": "EUR",
     "url": "https://www.xbox.com/it-IT/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:30:13.275392+00:00",
+    "scraped_at": "2026-08-16T09:30:03.966466+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -1027,10 +1027,10 @@
       {
         "plan": "Game Pass Core",
         "intro_price_raw": "1",
-        "regular_price_raw": "8,99",
+        "regular_price_raw": "12,99",
         "auto_renew_price_raw": null,
         "intro_price": 1.0,
-        "regular_price": 8.99,
+        "regular_price": 12.99,
         "auto_renew_price": null
       },
       {
@@ -1057,7 +1057,7 @@
     "region_code": "lt-LT",
     "currency": "EUR",
     "url": "https://www.xbox.com/lt-LT/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:30:20.888547+00:00",
+    "scraped_at": "2026-08-16T09:30:10.775056+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -1074,7 +1074,7 @@
     "region_code": "lv-LV",
     "currency": "EUR",
     "url": "https://www.xbox.com/lv-LV/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:30:27.829162+00:00",
+    "scraped_at": "2026-08-16T09:30:19.611978+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -1091,7 +1091,7 @@
     "region_code": "mk-MK",
     "currency": "USD",
     "url": "https://www.xbox.com/mk-MK/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:30:33.421769+00:00",
+    "scraped_at": "2026-08-16T09:30:25.869450+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -1108,7 +1108,7 @@
     "region_code": "mt-MT",
     "currency": "EUR",
     "url": "https://www.xbox.com/mt-MT/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:30:39.181471+00:00",
+    "scraped_at": "2026-08-16T09:30:32.468755+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -1125,7 +1125,7 @@
     "region_code": "nb-NO",
     "currency": "NOK",
     "url": "https://www.xbox.com/nb-NO/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:30:42.910388+00:00",
+    "scraped_at": "2026-08-16T09:30:39.693860+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -1139,10 +1139,10 @@
       {
         "plan": "Game Pass Core",
         "intro_price_raw": "10",
-        "regular_price_raw": "105",
+        "regular_price_raw": "149",
         "auto_renew_price_raw": null,
         "intro_price": 10.0,
-        "regular_price": 105.0,
+        "regular_price": 149.0,
         "auto_renew_price": null
       },
       {
@@ -1169,7 +1169,7 @@
     "region_code": "nl-BE",
     "currency": "EUR",
     "url": "https://www.xbox.com/nl-BE/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:30:46.717921+00:00",
+    "scraped_at": "2026-08-16T09:30:45.266967+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -1183,10 +1183,10 @@
       {
         "plan": "Game Pass Core",
         "intro_price_raw": "1",
-        "regular_price_raw": "8,99",
+        "regular_price_raw": "12,99",
         "auto_renew_price_raw": null,
         "intro_price": 1.0,
-        "regular_price": 8.99,
+        "regular_price": 12.99,
         "auto_renew_price": null
       },
       {
@@ -1213,7 +1213,7 @@
     "region_code": "nl-NL",
     "currency": "EUR",
     "url": "https://www.xbox.com/nl-NL/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:30:52.259704+00:00",
+    "scraped_at": "2026-08-16T09:30:50.766415+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -1227,10 +1227,10 @@
       {
         "plan": "Game Pass Core",
         "intro_price_raw": "1",
-        "regular_price_raw": "8,99",
+        "regular_price_raw": "12,99",
         "auto_renew_price_raw": null,
         "intro_price": 1.0,
-        "regular_price": 8.99,
+        "regular_price": 12.99,
         "auto_renew_price": null
       },
       {
@@ -1257,7 +1257,7 @@
     "region_code": "pl-PL",
     "currency": "PLN",
     "url": "https://www.xbox.com/pl-PL/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:30:58.598970+00:00",
+    "scraped_at": "2026-08-16T09:30:58.504230+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -1301,7 +1301,7 @@
     "region_code": "pt-PT",
     "currency": "EUR",
     "url": "https://www.xbox.com/pt-PT/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:31:05.096111+00:00",
+    "scraped_at": "2026-08-16T09:31:04.096229+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -1345,7 +1345,7 @@
     "region_code": "ro-MD",
     "currency": "USD",
     "url": "https://www.xbox.com/ro-MD/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:31:17.163512+00:00",
+    "scraped_at": "2026-08-16T09:31:10.344243+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -1362,7 +1362,7 @@
     "region_code": "ro-RO",
     "currency": "RON",
     "url": "https://www.xbox.com/ro-RO/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:31:22.856183+00:00",
+    "scraped_at": "2026-08-16T09:31:17.024595+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -1379,14 +1379,14 @@
     "region_code": "ru-RU",
     "currency": "RUB",
     "url": "https://www.xbox.com/ru-RU/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:31:29.001321+00:00",
+    "scraped_at": "2026-08-16T09:31:23.456317+00:00",
     "plans": []
   },
   {
     "region_code": "sk-SK",
     "currency": "EUR",
     "url": "https://www.xbox.com/sk-SK/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:31:33.453841+00:00",
+    "scraped_at": "2026-08-16T09:31:29.349414+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -1400,10 +1400,10 @@
       {
         "plan": "Game Pass Core",
         "intro_price_raw": "1",
-        "regular_price_raw": "8,99",
+        "regular_price_raw": "12,99",
         "auto_renew_price_raw": null,
         "intro_price": 1.0,
-        "regular_price": 8.99,
+        "regular_price": 12.99,
         "auto_renew_price": null
       },
       {
@@ -1430,7 +1430,7 @@
     "region_code": "sl-SI",
     "currency": "EUR",
     "url": "https://www.xbox.com/sl-SI/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:31:40.776816+00:00",
+    "scraped_at": "2026-08-16T09:31:34.967299+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -1447,7 +1447,7 @@
     "region_code": "sq-AL",
     "currency": "USD",
     "url": "https://www.xbox.com/sq-AL/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:31:52.252976+00:00",
+    "scraped_at": "2026-08-16T09:31:45.809308+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -1464,7 +1464,7 @@
     "region_code": "sv-SE",
     "currency": "SEK",
     "url": "https://www.xbox.com/sv-SE/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:31:58.164000+00:00",
+    "scraped_at": "2026-08-16T09:31:51.849992+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -1478,10 +1478,10 @@
       {
         "plan": "Game Pass Core",
         "intro_price_raw": "10",
-        "regular_price_raw": "95",
+        "regular_price_raw": "145",
         "auto_renew_price_raw": null,
         "intro_price": 10.0,
-        "regular_price": 95.0,
+        "regular_price": 145.0,
         "auto_renew_price": null
       },
       {
@@ -1508,7 +1508,7 @@
     "region_code": "tr-TR",
     "currency": "TRY",
     "url": "https://www.xbox.com/tr-TR/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:32:04.216059+00:00",
+    "scraped_at": "2026-08-16T09:31:57.422608+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -1552,15 +1552,15 @@
     "region_code": "uk-UA",
     "currency": "UAH",
     "url": "https://www.xbox.com/uk-UA/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:32:14.767356+00:00",
+    "scraped_at": "2026-08-16T09:32:04.497331+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
-        "intro_price_raw": null,
-        "regular_price_raw": null,
+        "intro_price_raw": "39,99",
+        "regular_price_raw": "290,00",
         "auto_renew_price_raw": "230,00",
-        "intro_price": null,
-        "regular_price": null,
+        "intro_price": 39.99,
+        "regular_price": 290.0,
         "auto_renew_price": 230.0
       }
     ]
@@ -1569,7 +1569,7 @@
     "region_code": "bs-Latn-BA",
     "currency": "USD",
     "url": "https://www.xbox.com/bs-Latn-BA/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:32:22.612108+00:00",
+    "scraped_at": "2026-08-16T09:32:10.693100+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -1586,7 +1586,7 @@
     "region_code": "sr-Latn-ME",
     "currency": "EUR",
     "url": "https://www.xbox.com/sr-Latn-ME/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:32:30.417200+00:00",
+    "scraped_at": "2026-08-16T09:32:15.920779+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -1603,7 +1603,7 @@
     "region_code": "sr-Latn-RS",
     "currency": "RSD",
     "url": "https://www.xbox.com/sr-Latn-RS/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:32:35.946309+00:00",
+    "scraped_at": "2026-08-16T09:32:22.333639+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -1620,7 +1620,7 @@
     "region_code": "en-AU",
     "currency": "AUD",
     "url": "https://www.xbox.com/en-AU/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:32:41.491103+00:00",
+    "scraped_at": "2026-08-16T09:32:27.825056+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -1634,10 +1634,10 @@
       {
         "plan": "Game Pass Core",
         "intro_price_raw": "1",
-        "regular_price_raw": "12.95",
+        "regular_price_raw": "17.95",
         "auto_renew_price_raw": null,
         "intro_price": 1.0,
-        "regular_price": 12.95,
+        "regular_price": 17.95,
         "auto_renew_price": null
       },
       {
@@ -1664,7 +1664,7 @@
     "region_code": "en-HK",
     "currency": "HKD",
     "url": "https://www.xbox.com/en-HK/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:32:45.959495+00:00",
+    "scraped_at": "2026-08-16T09:32:33.026621+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -1708,7 +1708,7 @@
     "region_code": "en-IN",
     "currency": "INR",
     "url": "https://www.xbox.com/en-IN/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:32:51.797407+00:00",
+    "scraped_at": "2026-08-16T09:32:38.959476+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -1752,7 +1752,7 @@
     "region_code": "en-MY",
     "currency": "MYR",
     "url": "https://www.xbox.com/en-MY/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:32:58.312723+00:00",
+    "scraped_at": "2026-08-16T09:32:45.234881+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -1769,7 +1769,7 @@
     "region_code": "en-NZ",
     "currency": "NZD",
     "url": "https://www.xbox.com/en-NZ/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:33:04.291694+00:00",
+    "scraped_at": "2026-08-16T09:32:51.153616+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -1782,10 +1782,10 @@
       },
       {
         "plan": "Game Pass Core",
-        "intro_price_raw": "2",
+        "intro_price_raw": null,
         "regular_price_raw": "15.95",
         "auto_renew_price_raw": null,
-        "intro_price": 2.0,
+        "intro_price": null,
         "regular_price": 15.95,
         "auto_renew_price": null
       },
@@ -1813,7 +1813,7 @@
     "region_code": "en-PH",
     "currency": "PHP",
     "url": "https://www.xbox.com/en-PH/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:33:11.126177+00:00",
+    "scraped_at": "2026-08-16T09:32:57.784530+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -1830,7 +1830,7 @@
     "region_code": "en-SG",
     "currency": "SGD",
     "url": "https://www.xbox.com/en-SG/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:33:16.913803+00:00",
+    "scraped_at": "2026-08-16T09:33:03.742069+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -1844,10 +1844,10 @@
       {
         "plan": "Game Pass Core",
         "intro_price_raw": "1",
-        "regular_price_raw": "10.99",
+        "regular_price_raw": "14.99",
         "auto_renew_price_raw": null,
         "intro_price": 1.0,
-        "regular_price": 10.99,
+        "regular_price": 14.99,
         "auto_renew_price": null
       },
       {
@@ -1874,16 +1874,16 @@
     "region_code": "id-ID",
     "currency": "IDR",
     "url": "https://www.xbox.com/id-ID/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:33:23.839491+00:00",
+    "scraped_at": "2026-08-16T09:33:11.297050+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
-        "intro_price_raw": "5,00",
-        "regular_price_raw": "25,00",
-        "auto_renew_price_raw": "5,00",
-        "intro_price": 5.0,
-        "regular_price": 25.0,
-        "auto_renew_price": 5.0
+        "intro_price_raw": "14.999",
+        "regular_price_raw": "82.999",
+        "auto_renew_price_raw": "82.999",
+        "intro_price": 14999.0,
+        "regular_price": 82999.0,
+        "auto_renew_price": 82999.0
       }
     ]
   },
@@ -1891,7 +1891,7 @@
     "region_code": "ja-JP",
     "currency": "JPY",
     "url": "https://www.xbox.com/ja-JP/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:33:29.869742+00:00",
+    "scraped_at": "2026-08-16T09:33:17.052212+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -1905,10 +1905,10 @@
       {
         "plan": "Game Pass Core",
         "intro_price_raw": "150",
-        "regular_price_raw": "850",
+        "regular_price_raw": "1,300",
         "auto_renew_price_raw": null,
         "intro_price": 150.0,
-        "regular_price": 850.0,
+        "regular_price": 1300.0,
         "auto_renew_price": null
       },
       {
@@ -1935,7 +1935,7 @@
     "region_code": "ka-GE",
     "currency": "USD",
     "url": "https://www.xbox.com/ka-GE/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:33:35.834917+00:00",
+    "scraped_at": "2026-08-16T09:33:24.719449+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -1952,7 +1952,7 @@
     "region_code": "ko-KR",
     "currency": "KRW",
     "url": "https://www.xbox.com/ko-KR/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:33:41.456162+00:00",
+    "scraped_at": "2026-08-16T09:33:30.774277+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -1996,15 +1996,15 @@
     "region_code": "th-TH",
     "currency": "THB",
     "url": "https://www.xbox.com/th-TH/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:33:49.077879+00:00",
+    "scraped_at": "2026-08-16T09:33:37.212007+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
-        "intro_price_raw": "35.00",
-        "regular_price_raw": "129.00",
+        "intro_price_raw": "35",
+        "regular_price_raw": "199",
         "auto_renew_price_raw": "129.00",
         "intro_price": 35.0,
-        "regular_price": 129.0,
+        "regular_price": 199.0,
         "auto_renew_price": 129.0
       }
     ]
@@ -2013,15 +2013,15 @@
     "region_code": "vi-VN",
     "currency": "VND",
     "url": "https://www.xbox.com/vi-VN/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:33:56.000173+00:00",
+    "scraped_at": "2026-08-16T09:33:45.824479+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
-        "intro_price_raw": "5,00",
-        "regular_price_raw": "25,00",
+        "intro_price_raw": "24.900",
+        "regular_price_raw": "129.000",
         "auto_renew_price_raw": "79.000,00",
-        "intro_price": 5.0,
-        "regular_price": 25.0,
+        "intro_price": 24900.0,
+        "regular_price": 129000.0,
         "auto_renew_price": 79000.0
       }
     ]
@@ -2030,7 +2030,7 @@
     "region_code": "zh-HK",
     "currency": "HKD",
     "url": "https://www.xbox.com/zh-HK/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:34:00.623494+00:00",
+    "scraped_at": "2026-08-16T09:33:51.684554+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -2074,7 +2074,7 @@
     "region_code": "zh-TW",
     "currency": "TWD",
     "url": "https://www.xbox.com/zh-TW/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:34:06.649090+00:00",
+    "scraped_at": "2026-08-16T09:33:57.066103+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -2088,10 +2088,10 @@
       {
         "plan": "Game Pass Core",
         "intro_price_raw": "30",
-        "regular_price_raw": "259",
+        "regular_price_raw": "349",
         "auto_renew_price_raw": null,
         "intro_price": 30.0,
-        "regular_price": 259.0,
+        "regular_price": 349.0,
         "auto_renew_price": null
       },
       {
@@ -2118,7 +2118,7 @@
     "region_code": "en-ZA",
     "currency": "ZAR",
     "url": "https://www.xbox.com/en-ZA/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:34:10.399715+00:00",
+    "scraped_at": "2026-08-16T09:34:03.023355+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -2132,10 +2132,10 @@
       {
         "plan": "Game Pass Core",
         "intro_price_raw": "19",
-        "regular_price_raw": "139",
+        "regular_price_raw": "199",
         "auto_renew_price_raw": null,
         "intro_price": 19.0,
-        "regular_price": 139.0,
+        "regular_price": 199.0,
         "auto_renew_price": null
       },
       {
@@ -2162,7 +2162,7 @@
     "region_code": "en-CA",
     "currency": "CAD",
     "url": "https://www.xbox.com/en-CA/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:34:15.882646+00:00",
+    "scraped_at": "2026-08-16T09:34:08.776281+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -2176,10 +2176,10 @@
       {
         "plan": "Game Pass Core",
         "intro_price_raw": "1",
-        "regular_price_raw": "13.99",
+        "regular_price_raw": "17.99",
         "auto_renew_price_raw": null,
         "intro_price": 1.0,
-        "regular_price": 13.99,
+        "regular_price": 17.99,
         "auto_renew_price": null
       },
       {
@@ -2206,7 +2206,7 @@
     "region_code": "en-US",
     "currency": "USD",
     "url": "https://www.xbox.com/en-US/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:34:21.858384+00:00",
+    "scraped_at": "2026-08-16T09:34:14.359819+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -2220,10 +2220,10 @@
       {
         "plan": "Game Pass Core",
         "intro_price_raw": "1",
-        "regular_price_raw": "9.99",
+        "regular_price_raw": "14.99",
         "auto_renew_price_raw": null,
         "intro_price": 1.0,
-        "regular_price": 9.99,
+        "regular_price": 14.99,
         "auto_renew_price": null
       },
       {
@@ -2250,7 +2250,7 @@
     "region_code": "es-AR",
     "currency": "ARS",
     "url": "https://www.xbox.com/es-AR/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:34:28.042920+00:00",
+    "scraped_at": "2026-08-16T09:34:20.368321+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -2294,7 +2294,7 @@
     "region_code": "es-BO",
     "currency": "USD",
     "url": "https://www.xbox.com/es-BO/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:34:35.614519+00:00",
+    "scraped_at": "2026-08-16T09:34:27.634488+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -2311,7 +2311,7 @@
     "region_code": "es-CL",
     "currency": "CLP",
     "url": "https://www.xbox.com/es-CL/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:34:41.704119+00:00",
+    "scraped_at": "2026-08-16T09:34:33.432908+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -2355,7 +2355,7 @@
     "region_code": "es-CO",
     "currency": "COP",
     "url": "https://www.xbox.com/es-CO/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:34:47.859759+00:00",
+    "scraped_at": "2026-08-16T09:34:38.485927+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -2399,7 +2399,7 @@
     "region_code": "es-CR",
     "currency": "CRC",
     "url": "https://www.xbox.com/es-CR/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:34:55.052812+00:00",
+    "scraped_at": "2026-08-16T09:34:46.188735+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -2416,7 +2416,7 @@
     "region_code": "es-EC",
     "currency": "USD",
     "url": "https://www.xbox.com/es-EC/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:35:03.038186+00:00",
+    "scraped_at": "2026-08-16T09:34:53.943323+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -2433,7 +2433,7 @@
     "region_code": "es-GT",
     "currency": "GTQ",
     "url": "https://www.xbox.com/es-GT/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:35:09.192919+00:00",
+    "scraped_at": "2026-08-16T09:35:03.371317+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -2450,7 +2450,7 @@
     "region_code": "es-HN",
     "currency": "USD",
     "url": "https://www.xbox.com/es-HN/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:35:17.374558+00:00",
+    "scraped_at": "2026-08-16T09:35:10.943304+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -2467,7 +2467,7 @@
     "region_code": "es-MX",
     "currency": "MXN",
     "url": "https://www.xbox.com/es-MX/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:35:23.797599+00:00",
+    "scraped_at": "2026-08-16T09:35:16.766057+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -2511,7 +2511,7 @@
     "region_code": "es-NI",
     "currency": "USD",
     "url": "https://www.xbox.com/es-NI/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:35:31.316703+00:00",
+    "scraped_at": "2026-08-16T09:35:23.261166+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -2528,7 +2528,7 @@
     "region_code": "es-PA",
     "currency": "USD",
     "url": "https://www.xbox.com/es-PA/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:35:40.171395+00:00",
+    "scraped_at": "2026-08-16T09:35:32.303361+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -2545,7 +2545,7 @@
     "region_code": "es-PE",
     "currency": "PEN",
     "url": "https://www.xbox.com/es-PE/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:35:47.460632+00:00",
+    "scraped_at": "2026-08-16T09:35:40.216002+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -2562,7 +2562,7 @@
     "region_code": "es-PY",
     "currency": "USD",
     "url": "https://www.xbox.com/es-PY/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:35:54.385405+00:00",
+    "scraped_at": "2026-08-16T09:35:47.800444+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -2579,7 +2579,7 @@
     "region_code": "es-SV",
     "currency": "USD",
     "url": "https://www.xbox.com/es-SV/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:36:02.473083+00:00",
+    "scraped_at": "2026-08-16T09:36:04.267551+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -2596,7 +2596,7 @@
     "region_code": "es-UY",
     "currency": "USD",
     "url": "https://www.xbox.com/es-UY/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:36:08.471327+00:00",
+    "scraped_at": "2026-08-16T09:36:10.440218+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
@@ -2613,15 +2613,15 @@
     "region_code": "fr-CA",
     "currency": "CAD",
     "url": "https://www.xbox.com/fr-CA/xbox-game-pass/pc-game-pass",
-    "scraped_at": "2026-08-23T09:36:18.352008+00:00",
+    "scraped_at": "2026-08-16T09:36:20.074336+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
         "intro_price_raw": "1",
-        "regular_price_raw": "13,99",
+        "regular_price_raw": "17,99",
         "auto_renew_price_raw": null,
         "intro_price": 1.0,
-        "regular_price": 13.99,
+        "regular_price": 17.99,
         "auto_renew_price": null
       }
     ]
@@ -2630,7 +2630,7 @@
     "region_code": "pt-BR",
     "currency": "BRL",
     "url": "https://www.xbox.com/pt-BR/xbox-game-pass",
-    "scraped_at": "2026-08-23T09:36:23.757896+00:00",
+    "scraped_at": "2026-08-16T09:36:25.582686+00:00",
     "plans": [
       {
         "plan": "PC Game Pass",
