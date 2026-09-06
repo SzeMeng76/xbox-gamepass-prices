@@ -337,6 +337,12 @@ def extract_plan_prices_from_blocks(html: str, currency: str) -> List[Dict[str, 
                 rf'\$[\s\xa0&nbsp;]*({num})[^，<]*，\s*之後每(?:個)?月\s+\$[\s\xa0&nbsp;]*({num})',
                 block, re.IGNORECASE
             )
+        if not m2:
+            # Try Indonesian pattern: "seharga Rp14.999, lalu Rp82.999/bulan"
+            m2 = re.search(
+                rf'seharga\s+(?:Rp[\s\xa0&nbsp;]*)?({num})[^,<]*,\s*lalu\s+(?:Rp[\s\xa0&nbsp;]*)?({num})[^<]*(?:/|\\u002F)bulan',
+                block, re.IGNORECASE
+            )
         if m2:
             r1, r2 = m2.group(1), m2.group(2)
             p1, p2 = clean_price(r1, currency), clean_price(r2, currency)
